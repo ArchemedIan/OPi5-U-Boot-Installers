@@ -23,8 +23,8 @@ fi
 boardName=$8
 orderUnder="${order// /_}"
 bootorder="${order//sd/mmc1}"
-bootorder="${order//emmc/mmc0}"
-bootorder="${order//sata/scsi}"
+bootorder="${bootorder//emmc/mmc0}"
+bootorder="${bootorder//sata/scsi}"
 sleep 30
 echo BOOT ORDER IS $bootorder
 sleep 30
