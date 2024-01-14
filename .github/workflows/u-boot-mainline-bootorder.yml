@@ -10,10 +10,10 @@ on:
         options: 
         - custom_order
         - sd usb nvme sata emmc
-        - sd usb emmc nvme sata emmc
-        - sd usb pxe dhcp nvme scsi emmc
+        - sd usb emmc nvme sata
+        - sd usb pxe dhcp nvme sata emmc
         - usb sd nvme sata emmc
-        - usb sd emmc nvme sata emmc
+        - usb sd emmc nvme sata
         - usb sd pxe dhcp nvme sata emmc
         
         - sd emmc nvme sata usb pxe dhcp
