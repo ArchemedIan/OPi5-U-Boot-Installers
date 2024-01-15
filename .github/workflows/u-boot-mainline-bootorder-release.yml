@@ -104,7 +104,7 @@ jobs:
       - name: Get current date
         id: date
         run: |
-          echo "{date}={$(date +'%Y%m%d%H%M%S')}" >> $GITHUB_STATE
+          echo "{date}={$(date +'%Y%m%d%H%M%S')}" >> $GITHUB_ENV
 
 
       - name: Create u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}
