@@ -62,7 +62,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-${{ matrix.boards.build }}
-          path: |
-            ${{ matrix.boards.build }}/u-boot/u-boot*
-            ${{ matrix.boards.build }}/u-boot/idbloader.img
-            ${{ matrix.boards.build }}/u-boot/idbloader-spi.img
+          path: ${{ matrix.boards.build }}/out/u-boot-*.bin
+            
