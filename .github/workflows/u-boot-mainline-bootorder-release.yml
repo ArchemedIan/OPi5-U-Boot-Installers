@@ -1620,5 +1620,4 @@ jobs:
           artifacts: ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-spi__*.bin
           omitBodyDuringUpdate: true
           omitDraftDuringUpdate: true
-          omitName: true
           omitNameDuringUpdate: true
