@@ -101,18 +101,12 @@ jobs:
           ./build.sh "${{ inputs.uboot_ref }}" "${{ inputs.uboot_repo }}" "${{ matrix.boards.config }}" "${{ inputs.bootorder}}" "${{ inputs.uboot_ref_custom }}" "${{ inputs.uboot_repo_custom}}" "${{ inputs.bootorder_custom }}" "${{ matrix.boards.name }}"
 
 
-      - name: Get current date
-        id: date
-        run: |
-          echo "{date}={$(date +'%Y%m%d%H%M%S')}" >> $GITHUB_ENV
-
-
       - name: Create u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}
         uses: ncipollo/release-action@v1.13.0
         with:
           allowUpdates: true
           name: ${{ inputs.uboot_ref }}-bootorder
-          tag: ${{ env.date }}-${{ inputs.uboot_ref }}-bootorder
+          tag: ${{ inputs.bootorder }}-${{ inputs.bootorder_custom }}-${{ inputs.uboot_ref }}-bootorder-spi
           replacesArtifacts: false
           prerelease: false
           draft: false
@@ -124,7 +118,7 @@ jobs:
         with:
           allowUpdates: true
           name: ${{ inputs.uboot_ref }}-bootorder-spi
-          tag: ${{ env.date }}-${{ inputs.uboot_ref }}-bootorder-spi
+          tag: ${{ inputs.bootorder }}-${{ inputs.bootorder_custom }}-${{ inputs.uboot_ref }}-bootorder-spi
           replacesArtifacts: false
           prerelease: false
           draft: false
