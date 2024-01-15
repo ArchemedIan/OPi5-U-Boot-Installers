@@ -101,25 +101,25 @@ jobs:
           ./build.sh "${{ inputs.uboot_ref }}" "${{ inputs.uboot_repo }}" "${{ matrix.boards.config }}" "${{ inputs.bootorder}}" "${{ inputs.uboot_ref_custom }}" "${{ inputs.uboot_repo_custom}}" "${{ inputs.bootorder_custom }}" "${{ matrix.boards.name }}"
 
 
-      - name: Create u-boot-${{ inputs.bb_ver }}
+      - name: Create u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}
         uses: ncipollo/release-action@v1.13.0
         with:
           allowUpdates: true
           name: ${{ inputs.uboot_ref }}-bootorder
           tag: u-boot-${{ inputs.uboot_ref }}-bootorder
-          replacesArtifacts: true
+          replacesArtifacts: false
           prerelease: false
           draft: true
           token: "${{ secrets.GITHUB_TOKEN }}"
           artifacts: ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}__*.bin
           
-      - name: Create u-boot-${{ inputs.bb_ver }}
+      - name: Create u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-spi
         uses: ncipollo/release-action@v1.13.0
         with:
           allowUpdates: true
           name: ${{ inputs.uboot_ref }}-bootorder-spi
           tag: u-boot-${{ inputs.uboot_ref }}-bootorder-spi
-          replacesArtifacts: true
+          replacesArtifacts: false
           prerelease: false
           draft: true
           token: "${{ secrets.GITHUB_TOKEN }}"
