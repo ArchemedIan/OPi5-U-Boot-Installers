@@ -80,5 +80,5 @@ ls
 #ls u-boot*>/dev/null && cp u-boot* $rootdir/out
 #[ -f idbloader.img ] && cp idbloader.img $rootdir/out
 #[ -f idbloader-spi.img ] && cp idbloader-spi.img $rootdir/out
-cp u-boot-rockchip-spi.bin $rootdir/out/u-boot-$boardName-$ubootRef-spi-$orderUnder.bin
+cp u-boot-rockchip-spi.bin $rootdir/out/u-boot-$ubootRef-$boardName-spi-$orderUnder.bin
 exit 0
