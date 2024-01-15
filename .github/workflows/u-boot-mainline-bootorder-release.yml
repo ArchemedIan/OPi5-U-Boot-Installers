@@ -110,4 +110,4 @@ jobs:
           prerelease: false
           draft: true
           token: "${{ secrets.GITHUB_TOKEN }}"
-          artifacts: ${{ matrix.boards.build }}/out/u-boot-*-spi-*.bin
+          artifacts: ${{ matrix.boards.build }}/out/u-boot-*.bin
