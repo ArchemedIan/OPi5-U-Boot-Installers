@@ -21,10 +21,13 @@ if [ -z "$7" ]; then
   order="sd usb nvme sata emmc"
 fi
 boardName=$8
+
 orderUnder="${order// /_}"
-bootorder="${order//sd/mmc1}"
+bootorder="${order//_/ }"
+bootorder="${bootorder//sd/mmc1}"
 bootorder="${bootorder//emmc/mmc0}"
 bootorder="${bootorder//sata/scsi}"
+
 #sleep 30
 echo BOOT ORDER IS $bootorder
 #sleep 30
