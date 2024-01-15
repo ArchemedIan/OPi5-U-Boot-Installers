@@ -31,7 +31,7 @@ on:
 
 jobs:
   build:
-    name: ${{ matrix.boards.name }}
+    name: ${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-${{ matrix.boards.bootorder }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
