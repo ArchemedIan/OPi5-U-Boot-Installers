@@ -7,7 +7,8 @@ ubootRepo=$2
 boardconfig=$3
 order=$4
 
-sd usb nvme sata emmc
+"${{ inputs.uboot_ref }}" "${{ inputs.uboot_repo }}" "${{ matrix.boards.config }}" "${{ matrix.boards.bootorder }}" "${{ inputs.uboot_ref_custom }}" "${{ inputs.uboot_repo_custom}}" "${{ inputs.bootorder_custom }}" "${{ matrix.boards.name }}"
+
 if [[ "$ubootRef" == *"custom_"* ]]; then
   ubootRef=$5
 fi
@@ -16,10 +17,11 @@ if [[ "$ubootRepo" == *"custom_"* ]]; then
 fi
 if [[ "$order" == *"custom_"* ]]; then
   order="$7"
+  if [ -z "$7" ]; then
+    order="sd usb nvme sata emmc"
+  fi
 fi
-if [ -z "$7" ]; then
-  order="sd usb nvme sata emmc"
-fi
+
 boardName=$8
 
 orderUnder="${order// /_}"
