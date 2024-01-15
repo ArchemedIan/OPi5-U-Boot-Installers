@@ -9,31 +9,31 @@ on:
         description: boot target order
         options: 
         - custom_order
-        - sd usb nvme sata emmc
-        - sd usb emmc nvme sata
-        - sd usb pxe dhcp nvme sata emmc
-        - usb sd nvme sata emmc
-        - usb sd emmc nvme sata
-        - usb sd pxe dhcp nvme sata emmc
+        - sd_usb_nvme_sata_emmc
+        - sd_usb_emmc_nvme_sata
+        - sd_usb_pxe_dhcp_nvme_sata_emmc
+        - usb_sd_nvme_sata_emmc
+        - usb_sd_emmc_nvme_sata
+        - usb_sd_pxe_dhcp_nvme_sata_emmc
         
-        - sd emmc nvme sata usb pxe dhcp
-        - emmc sd nvme sata usb pxe dhcp
-        - nvme sata sd emmc usb pxe dhcp
-        - emmc nvme sata sd usb pxe dhcp
+        - sd_emmc_nvme_sata_usb_pxe_dhcp
+        - emmc_sd_nvme_sata_usb_pxe_dhcp
+        - nvme_sata_sd_emmc_usb_pxe_dhcp
+        - emmc_nvme_sata_sd_usb_pxe_dhcp
         
-        - sd emmc nvme sata usb
-        - emmc sd nvme sata usb
-        - nvme sata sd emmc usb
-        - emmc nvme sata sd usb
+        - sd_emmc_nvme_sata_usb
+        - emmc_sd_nvme_sata_usb
+        - nvme_sata_sd_emmc_usb
+        - emmc_nvme_sata_sd_usb
         
-        - sd  
-        - emmc  
-        - nvme sata  
-        - usb  
-        - pxe  
+        - sd
+        - emmc
+        - nvme_sata
+        - usb
+        - pxe
         - dhcp
-        - pxe dhcp
-        - dhcp pxe
+        - pxe_dhcp
+        - dhcp_pxe
 
 
       bootorder_custom:
