@@ -106,7 +106,6 @@ jobs:
         with:
           allowUpdates: true
           name: ${{ inputs.uboot_ref }}-bootorder
-          tag: u-boot-${{ inputs.uboot_ref }}-bootorder
           replacesArtifacts: false
           prerelease: false
           draft: false
@@ -118,7 +117,6 @@ jobs:
         with:
           allowUpdates: true
           name: ${{ inputs.uboot_ref }}-bootorder-spi
-          tag: u-boot-${{ inputs.uboot_ref }}-bootorder-spi
           replacesArtifacts: false
           prerelease: false
           draft: false
