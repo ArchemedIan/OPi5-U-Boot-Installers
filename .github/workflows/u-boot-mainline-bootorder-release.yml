@@ -100,8 +100,14 @@ jobs:
           chmod a+x ./build.sh 
           ./build.sh "${{ inputs.uboot_ref }}" "${{ inputs.uboot_repo }}" "${{ matrix.boards.config }}" "${{ inputs.bootorder}}" "${{ inputs.uboot_ref_custom }}" "${{ inputs.uboot_repo_custom}}" "${{ inputs.bootorder_custom }}" "${{ matrix.boards.name }}"
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+      - name: Create u-boot-${{ inputs.bb_ver }}
+        uses: ncipollo/release-action@v1.13.0
         with:
-          name: u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-${{ matrix.boards.build }}-${{ inputs.bootorder}}
-          path: ${{ matrix.boards.build }}/out/u-boot-*-spi-*.bin
+          allowUpdates: true
+          name: ${{ inputs.uboot_ref }}-bootorder-spi
+          tag: u-boot-${{ inputs.uboot_ref }}-bootorder-spi
+          replacesArtifacts: true
+          prerelease: false
+          draft: true
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          artifacts: ${{ matrix.boards.build }}/out/u-boot-*-spi-*.bin
