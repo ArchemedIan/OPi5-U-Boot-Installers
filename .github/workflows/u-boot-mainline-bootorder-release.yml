@@ -112,6 +112,10 @@ jobs:
           draft: false
           token: "${{ secrets.GITHUB_TOKEN }}"
           artifacts: ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}__*.bin
+          omitBodyDuringUpdate: true
+          omitDraftDuringUpdate: true
+          omitName: false
+          omitNameDuringUpdate: true
           
       - name: Create u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-spi
         uses: ncipollo/release-action@v1.13.0
@@ -123,4 +127,8 @@ jobs:
           prerelease: false
           draft: false
           token: "${{ secrets.GITHUB_TOKEN }}"
-          artifacts: ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-spi__*.bin         
+          artifacts: ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-spi__*.bin
+          omitBodyDuringUpdate: true
+          omitDraftDuringUpdate: true
+          omitName: false
+          omitNameDuringUpdate: true
