@@ -1586,15 +1586,7 @@ jobs:
           repository: ArchemedIan/Opi5-u-boot-custom
           ref: main
           path: .
-      - name: Cache dirs
-        uses: actions/cache@v3
-        id: cache-dirs
-        with:
-          path: |
-            u-boot
-            rkbin
-          key: "${{ inputs.uboot_ref }}" "${{ inputs.uboot_repo }}" "${{ matrix.boards.config }}" "${{ matrix.boards.bootorder }}" "${{ inputs.uboot_ref_custom }}" "${{ inputs.uboot_repo_custom}}" "${{ inputs.bootorder_custom }}" "${{ matrix.boards.name }}"
-      
+
       - name: Build "${{ matrix.boards.config }}." variant "${{ matrix.boards.build }}"
         run: |
           cd ${{ matrix.boards.build }}
