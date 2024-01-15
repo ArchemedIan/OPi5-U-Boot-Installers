@@ -48,8 +48,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "dhcp",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -61,8 +60,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "dhcp_pxe",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -74,8 +72,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "dhcp_pxe_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -87,8 +84,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "dhcp_pxe_emmc_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -100,8 +96,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "dhcp_pxe_emmc_nvme_sata_usb_sd",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -113,8 +108,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "dhcp_pxe_emmc_usb_sd",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -126,8 +120,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "dhcp_pxe_emmc_usb_sd_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -139,8 +132,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "dhcp_pxe_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -152,8 +144,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "dhcp_pxe_nvme_sata_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -165,8 +156,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "dhcp_pxe_nvme_sata_emmc_usb_sd",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -178,8 +168,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "dhcp_pxe_nvme_sata_usb_sd",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -191,8 +180,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "dhcp_pxe_nvme_sata_usb_sd_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -204,8 +192,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "dhcp_pxe_usb_sd",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -217,8 +204,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "dhcp_pxe_usb_sd_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -230,8 +216,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "dhcp_pxe_usb_sd_emmc_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -243,8 +228,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "dhcp_pxe_usb_sd_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -256,8 +240,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "dhcp_pxe_usb_sd_nvme_sata_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -269,8 +252,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -282,8 +264,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_dhcp_pxe",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -295,8 +276,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_dhcp_pxe_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -308,8 +288,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_dhcp_pxe_nvme_sata_usb_sd",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -321,8 +300,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_dhcp_pxe_usb_sd",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -334,8 +312,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_dhcp_pxe_usb_sd_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -347,8 +324,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -360,8 +336,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_nvme_sata_dhcp_pxe",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -373,8 +348,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_nvme_sata_dhcp_pxe_usb_sd",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -386,8 +360,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_nvme_sata_pxe_dhcp",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -399,8 +372,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_nvme_sata_pxe_dhcp_sd_usb",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -412,8 +384,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_nvme_sata_sd_usb",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -425,8 +396,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_nvme_sata_sd_usb_pxe_dhcp",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -438,8 +408,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_nvme_sata_usb_sd",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -451,8 +420,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_nvme_sata_usb_sd_dhcp_pxe",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -464,8 +432,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_pxe_dhcp",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -477,8 +444,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_pxe_dhcp_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -490,8 +456,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_pxe_dhcp_nvme_sata_sd_usb",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -503,8 +468,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_pxe_dhcp_sd_usb",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -516,8 +480,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_pxe_dhcp_sd_usb_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -529,8 +492,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_sd_usb",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -542,8 +504,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_sd_usb_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -555,8 +516,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_sd_usb_nvme_sata_pxe_dhcp",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -568,8 +528,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_sd_usb_pxe_dhcp",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -581,8 +540,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_sd_usb_pxe_dhcp_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -594,8 +552,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_usb_sd",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -607,8 +564,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_usb_sd_dhcp_pxe",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -620,8 +576,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_usb_sd_dhcp_pxe_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -633,8 +588,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_usb_sd_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -646,8 +600,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "emmc_usb_sd_nvme_sata_dhcp_pxe",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -659,8 +612,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "mmc1",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -672,8 +624,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -685,8 +636,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_dhcp_pxe",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -698,8 +648,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_dhcp_pxe_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -711,8 +660,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_dhcp_pxe_emmc_usb_sd",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -724,8 +672,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_dhcp_pxe_usb_sd",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -737,8 +684,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_dhcp_pxe_usb_sd_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -750,8 +696,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -763,8 +708,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_emmc_dhcp_pxe",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -776,8 +720,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_emmc_dhcp_pxe_usb_sd",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -789,8 +732,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_emmc_pxe_dhcp",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -802,8 +744,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_emmc_pxe_dhcp_sd_usb",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -815,8 +756,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_emmc_sd_usb",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -828,8 +768,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_emmc_sd_usb_pxe_dhcp",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -841,8 +780,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_emmc_usb_sd",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -854,8 +792,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_emmc_usb_sd_dhcp_pxe",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -867,8 +804,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_pxe_dhcp",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -880,8 +816,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_pxe_dhcp_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -893,8 +828,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_pxe_dhcp_emmc_sd_usb",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -906,8 +840,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_pxe_dhcp_sd_usb",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -919,8 +852,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_pxe_dhcp_sd_usb_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -932,8 +864,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_sd_usb",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -945,8 +876,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_sd_usb_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -958,8 +888,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_sd_usb_emmc_pxe_dhcp",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -971,8 +900,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_sd_usb_pxe_dhcp",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -984,8 +912,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_sd_usb_pxe_dhcp_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -997,8 +924,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_usb_sd",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1010,8 +936,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_usb_sd_dhcp_pxe",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1023,8 +948,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_usb_sd_dhcp_pxe_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1036,8 +960,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_usb_sd_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1049,8 +972,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "nvme_sata_usb_sd_emmc_dhcp_pxe",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1062,8 +984,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "pxe",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1075,8 +996,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "pxe_dhcp",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1088,8 +1008,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "pxe_dhcp_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1101,8 +1020,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "pxe_dhcp_emmc_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1114,8 +1032,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "pxe_dhcp_emmc_nvme_sata_sd_usb",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1127,8 +1044,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "pxe_dhcp_emmc_sd_usb",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1140,8 +1056,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "pxe_dhcp_emmc_sd_usb_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1153,8 +1068,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "pxe_dhcp_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1166,8 +1080,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "pxe_dhcp_nvme_sata_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1179,8 +1092,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "pxe_dhcp_nvme_sata_emmc_sd_usb",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1192,8 +1104,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "pxe_dhcp_nvme_sata_sd_usb",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1205,8 +1116,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "pxe_dhcp_nvme_sata_sd_usb_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1218,8 +1128,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "pxe_dhcp_sd_usb",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1231,8 +1140,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "pxe_dhcp_sd_usb_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1244,8 +1152,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "pxe_dhcp_sd_usb_emmc_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1257,8 +1164,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "pxe_dhcp_sd_usb_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1270,8 +1176,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "pxe_dhcp_sd_usb_nvme_sata_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1283,8 +1188,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "sd_usb",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1296,8 +1200,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "sd_usb_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1309,8 +1212,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "sd_usb_emmc_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1322,8 +1224,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "sd_usb_emmc_nvme_sata_pxe_dhcp",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1335,8 +1236,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "sd_usb_emmc_pxe_dhcp",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1348,8 +1248,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "sd_usb_emmc_pxe_dhcp_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1361,8 +1260,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "sd_usb_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1374,8 +1272,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "sd_usb_nvme_sata_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1387,8 +1284,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "sd_usb_nvme_sata_emmc_pxe_dhcp",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1400,8 +1296,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "sd_usb_nvme_sata_pxe_dhcp",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1413,8 +1308,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "sd_usb_nvme_sata_pxe_dhcp_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1426,8 +1320,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "sd_usb_pxe_dhcp",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1439,8 +1332,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "sd_usb_pxe_dhcp_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1452,8 +1344,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "sd_usb_pxe_dhcp_emmc_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1465,8 +1356,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "sd_usb_pxe_dhcp_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1478,8 +1368,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "sd_usb_pxe_dhcp_nvme_sata_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1491,8 +1380,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "usb",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1504,8 +1392,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "usb_sd",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1517,8 +1404,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "usb_sd_dhcp_pxe",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1530,8 +1416,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "usb_sd_dhcp_pxe_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1543,8 +1428,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "usb_sd_dhcp_pxe_emmc_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1556,8 +1440,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "usb_sd_dhcp_pxe_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1569,8 +1452,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "usb_sd_dhcp_pxe_nvme_sata_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1582,8 +1464,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "usb_sd_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1595,8 +1476,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "usb_sd_emmc_dhcp_pxe",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1608,8 +1488,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "usb_sd_emmc_dhcp_pxe_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1621,8 +1500,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "usb_sd_emmc_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1634,8 +1512,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "usb_sd_emmc_nvme_sata_dhcp_pxe",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1647,8 +1524,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "usb_sd_nvme_sata",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1660,8 +1536,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "usb_sd_nvme_sata_dhcp_pxe",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1673,8 +1548,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "usb_sd_nvme_sata_dhcp_pxe_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1686,8 +1560,7 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "usb_sd_nvme_sata_emmc",
-            }
-
+            },
             {
               "name": "rk3588-orangepi-5-plus",
               "config": "orangepi-5-plus-rk3588_defconfig",
@@ -1699,7 +1572,8 @@ jobs:
              "config": "orangepi-5-rk3588s_defconfig",
              "build": "bootorder",
              "bootorder": "usb_sd_nvme_sata_emmc_dhcp_pxe",
-            }
+            },
+
           ]
 
     steps:
