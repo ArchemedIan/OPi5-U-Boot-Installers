@@ -106,7 +106,7 @@ jobs:
         with:
           allowUpdates: true
           name: ${{ inputs.uboot_ref }}-bootorder
-          tag: ${{ inputs.bootorder }}-${{ inputs.bootorder_custom }}-${{ inputs.uboot_ref }}-bootorder-spi
+          tag: ${{ inputs.bootorder }}-${{ inputs.bootorder_custom }}-${{ inputs.uboot_ref }}-bootorder
           replacesArtifacts: false
           prerelease: false
           draft: false
