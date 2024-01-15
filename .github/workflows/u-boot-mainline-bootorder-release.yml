@@ -1586,7 +1586,8 @@ jobs:
           repository: ArchemedIan/Opi5-u-boot-custom
           ref: main
           path: .
-      - uses: actions/cache@v3
+      - name: Cache dirs
+        uses: actions/cache@v3
         with:
           path: |
             u-boot
