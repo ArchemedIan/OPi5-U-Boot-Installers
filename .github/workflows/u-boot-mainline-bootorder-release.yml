@@ -2,7 +2,11 @@ name: Release u-boot mainline with custom bootorder
 run-name: ${{ inputs.bootorder}} ${{ inputs.bootorder_custom}}
 on:
   workflow_dispatch:
-    inputs:      
+    inputs:  
+      releaseTag:
+        description: releaseTag
+        required: true
+        type: string
       uboot_repo:
         required: true
         type: choice
@@ -113,23 +117,13 @@ jobs:
           chmod a+x ./build.sh 
           ./build.sh "${{ inputs.uboot_ref }}" "${{ inputs.uboot_repo }}" "${{ matrix.boards.config }}" "${{ matrix.boards.bootorder }}" "${{ inputs.uboot_ref_custom }}" "${{ inputs.uboot_repo_custom}}" "${{ inputs.bootorder_custom }}" "${{ matrix.boards.name }}"
 
-      - name: make draft release
+      - name: Upload release assets
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release list | grep "${{ inputs.uboot_ref }}-bootorder" || gh release create --draft "${{ inputs.uboot_ref }}-bootorder"
-
-      - name: make draft release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release list | grep "${{ inputs.uboot_ref }}-bootorder-spi" || gh release create --draft "${{ inputs.uboot_ref }}-bootorder-spi"
+        run: gh release upload "${{ inputs.releaseTag }}" ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}__*.bin
 
       - name: Upload release assets
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload "${{ inputs.uboot_ref }}-bootorder" ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}__*.bin
-
-      - name: Upload release assets
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload "${{ inputs.uboot_ref }}-bootorder-spi" ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}__*.bin
+        run: gh release upload "${{ inputs.releaseTag }}" ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-spi__*.bin
         
