@@ -109,7 +109,7 @@ jobs:
           tag: u-boot-${{ inputs.uboot_ref }}-bootorder
           replacesArtifacts: false
           prerelease: false
-          draft: true
+          draft: false
           token: "${{ secrets.GITHUB_TOKEN }}"
           artifacts: ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}__*.bin
           
@@ -121,6 +121,6 @@ jobs:
           tag: u-boot-${{ inputs.uboot_ref }}-bootorder-spi
           replacesArtifacts: false
           prerelease: false
-          draft: true
+          draft: false
           token: "${{ secrets.GITHUB_TOKEN }}"
           artifacts: ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-spi__*.bin         
