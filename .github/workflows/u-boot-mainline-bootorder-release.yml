@@ -113,27 +113,23 @@ jobs:
           chmod a+x ./build.sh 
           ./build.sh "${{ inputs.uboot_ref }}" "${{ inputs.uboot_repo }}" "${{ matrix.boards.config }}" "${{ matrix.boards.bootorder }}" "${{ inputs.uboot_ref_custom }}" "${{ inputs.uboot_repo_custom}}" "${{ inputs.bootorder_custom }}" "${{ matrix.boards.name }}"
 
+      - name: make draft release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release list | grep "${{ inputs.uboot_ref }}-bootorder" || gh release create --draft "${{ inputs.uboot_ref }}-bootorder"
 
-      - name: Create u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}
-        uses: ncipollo/release-action@v1.13.0
-        with:
-          allowUpdates: true
-          tag: "${{ inputs.uboot_ref }}-bootorder"
-          replacesArtifacts: false
-          prerelease: false
-          draft: true
-          token: "${{ secrets.GITHUB_TOKEN }}"
-          artifacts: ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}__*.bin
+      - name: make draft release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release list | grep "${{ inputs.uboot_ref }}-bootorder-spi" || gh release create --draft "${{ inputs.uboot_ref }}-bootorder-spi"
 
-      - name: Create u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-spi
-        uses: ncipollo/release-action@v1.13.0
-        with:
-          allowUpdates: true
-          omitName: true
-          tag: "${{ inputs.uboot_ref }}-bootorder-spi"
-          replacesArtifacts: false
-          prerelease: false
-          draft: true
-          token: "${{ secrets.GITHUB_TOKEN }}"
-          artifacts: ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-spi__*.bin
+      - name: Upload release assets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release upload "${{ inputs.uboot_ref }}-bootorder" ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}__*.bin
 
+      - name: Upload release assets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release upload "${{ inputs.uboot_ref }}-bootorder-spi" ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}__*.bin
+        
