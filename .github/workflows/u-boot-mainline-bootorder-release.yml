@@ -1,0 +1,107 @@
+name: Build u-boot mainline with custom bootorder
+run-name: ${{ inputs.bootorder}}
+on:
+  workflow_dispatch:
+    inputs:      
+      bootorder:
+        required: true
+        type: choice
+        description: boot target order
+        options: 
+        - custom_order
+        - sd usb nvme sata emmc
+        - sd usb emmc nvme sata
+        - sd usb pxe dhcp nvme sata emmc
+        - usb sd nvme sata emmc
+        - usb sd emmc nvme sata
+        - usb sd pxe dhcp nvme sata emmc
+        
+        - sd emmc nvme sata usb pxe dhcp
+        - emmc sd nvme sata usb pxe dhcp
+        - nvme sata sd emmc usb pxe dhcp
+        - emmc nvme sata sd usb pxe dhcp
+        
+        - sd emmc nvme sata usb
+        - emmc sd nvme sata usb
+        - nvme sata sd emmc usb
+        - emmc nvme sata sd usb
+        
+        - sd  
+        - emmc  
+        - nvme sata  
+        - usb  
+        - pxe  
+        - dhcp
+        - pxe dhcp
+        - dhcp pxe
+
+
+      bootorder_custom:
+        description: custom boot target order
+        required: false
+        type: string
+      uboot_repo:
+        required: true
+        type: choice
+        description: u-boot git repo
+        options: 
+        - https://source.denx.de/u-boot/u-boot
+        - custom_repo
+      uboot_repo_custom:
+        description: custom u-boot git repo
+        required: false
+        type: string
+      uboot_ref:
+        required: true
+        type: choice
+        description: u-boot ref
+        options: 
+        - v2024.01
+        - v2023.10
+        - master
+        - custom_ref
+      uboot_ref_custom:
+        description: custom u-boot ref
+        required: false
+        type: string
+
+
+jobs:
+  build:
+    name: ${{ matrix.boards.name }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        boards: 
+          [
+            {
+              "name": "rk3588-orangepi-5-plus",
+              "config": "orangepi-5-plus-rk3588_defconfig",
+              "build": "bootorder",
+            },
+            {
+              "name": "rk3588s-orangepi-5",
+              "config": "orangepi-5-rk3588s_defconfig",
+              "build": "bootorder",
+            }
+          ]
+
+    steps:
+      - name: Checkout Opi5-u-boot-custom
+        uses: actions/checkout@v3
+        with:
+          repository: ArchemedIan/Opi5-u-boot-custom
+          ref: main
+          path: .
+
+      - name: Build "${{ matrix.boards.config }}." variant "${{ matrix.boards.build }}"
+        run: |
+          cd ${{ matrix.boards.build }}
+          chmod a+x ./build.sh 
+          ./build.sh "${{ inputs.uboot_ref }}" "${{ inputs.uboot_repo }}" "${{ matrix.boards.config }}" "${{ inputs.bootorder}}" "${{ inputs.uboot_ref_custom }}" "${{ inputs.uboot_repo_custom}}" "${{ inputs.bootorder_custom }}" "${{ matrix.boards.name }}"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-${{ matrix.boards.build }}-${{ inputs.bootorder}}
+          path: ${{ matrix.boards.build }}/out/u-boot-*-spi-*.bin
