@@ -1597,7 +1597,7 @@ jobs:
         run: |
           randone=$((RANDOM % 60))
           randtwo=$((RANDOM % 500))
-          rand=%(($randone + $randtwo))
+          rand=$(($randone + $randtwo))
           sleep $rand
         
       - name: Upload release assets
