@@ -1595,7 +1595,10 @@ jobs:
 
       - name: sleep for a random amount of time
         run: |
-          sleep $((RANDOM % 240))
+          randone=$((RANDOM % 60))
+          randtwo=$((RANDOM % 500))
+          rand=%(($randone + $randtwo))
+          sleep $rand
         
       - name: Upload release assets
         env:
