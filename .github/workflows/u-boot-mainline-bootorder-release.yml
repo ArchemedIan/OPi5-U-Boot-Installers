@@ -1593,20 +1593,14 @@ jobs:
           chmod a+x ./build.sh 
           ./build.sh "${{ inputs.uboot_ref }}" "${{ inputs.uboot_repo }}" "${{ matrix.boards.config }}" "${{ matrix.boards.bootorder }}" "${{ inputs.uboot_ref_custom }}" "${{ inputs.uboot_repo_custom}}" "${{ inputs.bootorder_custom }}" "${{ matrix.boards.name }}"
 
-      - name: sleep for a random amount of time
-        run: |
-          randone=$((RANDOM % 60))
-          randtwo=$((RANDOM % 500))
-          rand=$(($randone + $randtwo))
-          sleep $rand
         
       - name: Upload release assets
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload ${{ inputs.releaseTag }} ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}__*.bin || gh release create --title ${{ inputs.releaseTag }} ${{ inputs.releaseTag }} ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}__*.bin
+        run: while true; do gh release upload ${{ inputs.releaseTag }} ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}__*.bin && break || gh release create --title ${{ inputs.releaseTag }} ${{ inputs.releaseTag }} ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}__*.bin && break || sleep $((RANDOM % 60)); done
 
       - name: Upload release assets
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload ${{ inputs.releaseTag }}-spi ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-spi__*.bin || gh release create --title ${{ inputs.releaseTag }}-spi ${{ inputs.releaseTag }}-spi ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-spi__*.bin
+        run: while true; do gh release upload ${{ inputs.releaseTag }}-spi ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-spi__*.bin && break || gh release create --title ${{ inputs.releaseTag }}-spi ${{ inputs.releaseTag }}-spi ${{ matrix.boards.build }}/out/u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-spi__*.bin && break || sleep $((RANDOM % 60)); done
         
