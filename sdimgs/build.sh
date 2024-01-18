@@ -5,7 +5,8 @@ bootorderDir=$rootdir/../bootorder
 bootorderSpiDir=$rootdir/../spi-inst
 sdimgOutDir=$rootdir/sdmimgout
 sdimgSpiOutDir=$rootdir/sdmimgspiout
-
+mkdir $sdimgOutDir
+mkdir $sdimgSpiOutDir
 ubootRef=$1
 ubootRepo=$2
 boardconfig=$3
