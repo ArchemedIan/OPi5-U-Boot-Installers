@@ -61,7 +61,7 @@ sudo partprobe $NewImgloopdev
 sudo mkfs.ext4 -L SpiInst ${NewImgloopdev}p1
 sudo partprobe $NewImgloopdev
 sudo tune2fs -O ^metadata_csum ${NewImgloopdev}p1
-sudo dd if=u-boot-spi-inst-$ubootRef-${boardName}__${order}.bin of=sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order}.img seek=1 bs=32k conv=fsync
+sudo dd if=u-boot-spi-inst-$ubootRef-${boardName}__${order}.bin of=$NewImgloopdev seek=1 bs=32k conv=fsync
 sync
 mkdir 1
 sudo mount ${NewImgloopdev}p1 1
