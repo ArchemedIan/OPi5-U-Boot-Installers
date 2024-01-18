@@ -1,6 +1,6 @@
 #!/bin/bash
 rootdir="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-
+echo starting spi-inst build. rootdir is $rootdir
 ubootRef=$1
 ubootRepo=$2
 boardconfig=$3
@@ -77,5 +77,8 @@ grep "BROM_BOOTSOURCE_SPINOR_RK3588 = 6" arch/arm/include/asm/arch-rockchip/boot
 make KCFLAGS="-fno-peephole2" CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) || exit 1
 
 cp u-boot-rockchip.bin $rootdir/out/u-boot-spi-inst-$ubootRef-${boardName}__$orderUnder.bin
+
 cd $rootdir
+ls $rootdir
+ls $rootdir/out
 exit 0
