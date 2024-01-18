@@ -6,7 +6,6 @@ ubootRepo=$2
 boardconfig=$3
 order=$4
 
-"${{ inputs.uboot_ref }}" "${{ inputs.uboot_repo }}" "${{ matrix.boards.config }}" "${{ matrix.boards.bootorder }}" "${{ inputs.uboot_ref_custom }}" "${{ inputs.uboot_repo_custom}}" "${{ inputs.bootorder_custom }}" "${{ matrix.boards.name }}"
 
 if [[ "$ubootRef" == *"custom_"* ]]; then
   ubootRef=$5
