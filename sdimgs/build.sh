@@ -30,7 +30,8 @@ mv $bootorderDir/out/u-boot-${ubootRef}-${boardName}__${order}.bin .
 fallocate -l 16M sdimg-u-boot-${ubootRef}-${boardName}__${order}.img
 dd if=u-boot-${ubootRef}-${boardName}__${order}.bin of=sdimg-u-boot-${ubootRef}-${boardName}__${order}.img seek=1 bs=32k conv=fsync
 mv sdimg-u-boot-${ubootRef}-${boardName}__${order}.img $sdimgOutDir/
-rm $bootorderDir/out/u-boot-${ubootRef}-${boardName}__${order}.bin
+mv u-boot-${ubootRef}-${boardName}__${order}.bin $sdimgOutDir/
+#rm $bootorderDir/out/u-boot-${ubootRef}-${boardName}__${order}.bin
 cd $rootdir
 
 #build bootordered sdimg SPI installer
@@ -43,10 +44,11 @@ cd $rootdir
 mkdir sdimgspi
 cd sdimgspi
 mv $bootorderSpiDir/out/u-boot-spi-inst-$ubootRef-${boardName}__$orderUnder.bin .
-fallocate -l 16M sdimg-u-boot-${ubootRef}-${boardName}__${order}.img
-dd if=u-boot-${ubootRef}-${boardName}__${order}.bin of=sdimg-u-boot-${ubootRef}-${boardName}__${order}.img seek=1 bs=32k conv=fsync
-mv sdimg-u-boot-${ubootRef}-${boardName}__${order}.img $sdimgOutDir/
-rm $bootorderDir/out/u-boot-${ubootRef}-${boardName}__${order}.bin
+fallocate -l 16M sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order}.img
+dd if=u-boot-spi-inst-$ubootRef-${boardName}__${order}.bin of=sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order}.img seek=1 bs=32k conv=fsync
+mv sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order}.img $sdimgOutDir/
+mv u-boot-spi-inst-$ubootRef-${boardName}__${order}.bin $sdimgOutDir/
+#rm $bootorderDir/out/u-boot-spi-inst-${ubootRef}-${boardName}__${order}.bin
 cd $rootdir
 
 #upload 
