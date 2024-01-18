@@ -58,9 +58,10 @@ mklabel gpt \
 mkpart primary ext4 16MiB -32768s \
 name 1 SpiInst
 sudo partprobe $NewImgloopdev
-sudo mkfs.ext4 -L SpiInst ${NewImgloopdev}p1
+#sudo mkfs.ext4 -L SpiInst ${NewImgloopdev}p1
+sudo mkfs.fat -F 32 -n SpiInst ${NewImgloopdev}p1
 sudo partprobe $NewImgloopdev
-sudo tune2fs -O ^metadata_csum ${NewImgloopdev}p1
+#sudo tune2fs -O ^metadata_csum ${NewImgloopdev}p1
 sudo dd if=u-boot-spi-inst-$ubootRef-${boardName}__${order}.bin of=$NewImgloopdev seek=1 bs=32k conv=fsync
 sync
 mkdir 1
