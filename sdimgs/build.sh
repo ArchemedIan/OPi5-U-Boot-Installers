@@ -65,7 +65,7 @@ sudo dd if=u-boot-spi-inst-$ubootRef-${boardName}__${order}.bin of=$NewImgloopde
 sync
 mkdir 1
 sudo mount ${NewImgloopdev}p1 1
-cp $sdimgOutDir/u-boot-${ubootRef}-${boardName}__${order}.bin 1
+sudo cp $sdimgOutDir/u-boot-${ubootRef}-${boardName}__${order}.bin 1
 sudo umount ${NewImgloopdev}p1
 sudo partx -d ${NewImgloopdev}p1
 sudo losetup -d ${NewImgloopdev}
