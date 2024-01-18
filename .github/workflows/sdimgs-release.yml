@@ -63,7 +63,7 @@ jobs:
           ref: main
           path: .
 
-      - name: Build "${{ matrix.boards.config }}." variant "${{ matrix.boards.build }}"
+      - name: Build "${{ matrix.boards.config }}." sdimgs
         run: |
           cd sdimgs
           chmod a+x ./build.sh 
