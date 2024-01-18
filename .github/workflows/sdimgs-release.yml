@@ -72,5 +72,6 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: u-boot-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-sdimgs-${{ inputs.bootorder}}
-          path: ${{ matrix.boards.build }}/out/u-boot-*-spi-*.bin
+          name: u-boot-sdimgs-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-${{ inputs.bootorder}}
+          path: |
+            sdimgs/sdmimgout/*
