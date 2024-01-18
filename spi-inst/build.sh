@@ -4,22 +4,30 @@ rootdir="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 ubootRef=$1
 ubootRepo=$2
 boardconfig=$3
+order=$4
+
+"${{ inputs.uboot_ref }}" "${{ inputs.uboot_repo }}" "${{ matrix.boards.config }}" "${{ matrix.boards.bootorder }}" "${{ inputs.uboot_ref_custom }}" "${{ inputs.uboot_repo_custom}}" "${{ inputs.bootorder_custom }}" "${{ matrix.boards.name }}"
 
 if [[ "$ubootRef" == *"custom_"* ]]; then
-  ubootRef=$4
+  ubootRef=$5
 fi
 if [[ "$ubootRepo" == *"custom_"* ]]; then
-  ubootRepo=$5
+  ubootRepo=$6
 fi
-boardName=$6
+if [[ "$order" == *"custom_"* ]]; then
+  order="$7"
+  if [ -z "$7" ]; then
+    order="sd usb nvme sata emmc"
+  fi
+fi
 
-
+boardName=$8
+orderUnder="${order// /_}"
 bootorder="${order//_/ }"
 bootorder="${bootorder//sd/mmc1}"
 bootorder="${bootorder//emmc/mmc0}"
 bootorder="${bootorder//sata/scsi}"
 
-#none of that is right. draft
 sudo apt-get update
 sudo apt-get install gcc-12 gcc-12-aarch64-linux-gnu python3-pyelftools confget
 
@@ -50,8 +58,7 @@ grep "CONFIG_ROCKCHIP_SPI_IMAGE=y" $rootdir/u-boot/configs/${boardconfig} >/dev/
 
 cat $rootdir/spi-inst.config >> $rootdir/u-boot/configs/${boardconfig}
 
-
-paste -s -d '' $rootdir/preboot.tmp |tr '\t' ' ' | tr -s ' ' | sed 's/"/\\"/g' | sed 's/|/"/g'  >> $rootdir/u-boot/configs/${boardconfig}
+paste -s -d '' $rootdir/preboot.tmp | sed "s|__bootorder__|$orderUnder|g" | sed "s|__boardname__|$boardName|g" | sed "s|__ref__|$ubootRef|g" |tr '\t' ' ' | tr -s ' ' | sed 's/"/\\"/g' | sed 's/|/"/g'  >> $rootdir/u-boot/configs/${boardconfig}
 
 paste -s -d '' $rootdir/bootcmd.tmp |tr '\t' ' ' | tr -s ' ' | sed 's/"/\\"/g' | sed 's/|/"/g'  >> $rootdir/u-boot/configs/${boardconfig}
 cat $rootdir/u-boot/configs/${boardconfig}
@@ -70,7 +77,6 @@ make ${boardconfig}
 grep "BROM_BOOTSOURCE_SPINOR_RK3588 = 6" arch/arm/include/asm/arch-rockchip/bootrom.h && patch -p1 < v2-1-4-rockchip-rk3588-Fix-boot-from-SPI-flash.diff 
 make KCFLAGS="-fno-peephole2" CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) || exit 1
 
-cp u-boot-rockchip-spi.bin $rootdir/out/u-boot-boughboot-$ubootRef-$boardName-spi.bin
-cp u-boot-rockchip.bin $rootdir/out/u-boot-boughboot-$ubootRef-$boardName.bin
+cp u-boot-rockchip.bin $rootdir/out/u-boot-spi-inst-$ubootRef-${boardName}__$orderUnder.bin
 cd $rootdir
 exit 0
