@@ -21,13 +21,13 @@ else;
 			fatwrite ${SpiInstDevType} 0#SpiInst "${loadaddr}" "success/u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin" "${filesize}"; 
 			fatrm ${SpiInstDevType} 0#SpiInst "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
 			led led on; 
-		else; 
+		else 
 			echo "SPI Installer: spi u-boot install failed"; 
 			fatmkdir ${SpiInstDevType} 0#SpiInst failure; 
 			fatwrite ${SpiInstDevType} 0#SpiInst "${loadaddr}" "failure/u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin" "${filesize}"; 
 			fatrm ${SpiInstDevType} 0#SpiInst "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
 		fi; 
-	else; 
+	else 
 		echo "SPI Installer: failed to load spi u-boot into memory"; 
 	fi; 
 fi; 
