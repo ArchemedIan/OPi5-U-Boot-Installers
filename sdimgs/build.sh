@@ -44,7 +44,7 @@ cd $rootdir
 #make bootordered sdimg SPI installer
 mkdir sdimgspi
 cd sdimgspi
-mv $bootorderSpiDir/out/u-boot-spi-inst-$ubootRef-${boardName}__$orderUnder.bin .
+mv $bootorderSpiDir/out/u-boot-spi-inst-$ubootRef-${boardName}__${order}.bin .
 fallocate -l 16M sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order}.img
 dd if=u-boot-spi-inst-$ubootRef-${boardName}__${order}.bin of=sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order}.img seek=1 bs=32k conv=fsync
 mv sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order}.img $sdimgOutDir/
