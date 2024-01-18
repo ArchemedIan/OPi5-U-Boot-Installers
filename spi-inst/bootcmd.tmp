@@ -1,0 +1,14 @@
+CONFIG_BOOTCOMMAND=|
+echo '"SPI Installer: attempt to install"'; 
+if load mmc 1:1 "'${loadaddr}'" "'/u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin;'" 
+	if sf update "'${loadaddr}'" 0 '${filesize}'"; then 
+		echo '"SPI Installer: spi u-boot install success"'; 
+	else; 
+		echo '"SPI Installer: spi u-boot install failed"'; 
+	fi; 
+else;
+	echo '"SPI Installer: failed to loasd pi u-boot into memory"'; 
+fi; 
+|
+
+u-boot-$ubootRef-$boardName-spi__$orderUnder.bin
