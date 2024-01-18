@@ -16,7 +16,8 @@ ubootCustRepo=$6
 custOrder="$7"
 boardName=$8
 
-
+apt update
+apt install parted
 
 #build bootordered
 cd $bootorderDir
