@@ -4,16 +4,11 @@ echo "SPI Installer: board should be ${SpiInstboardname}";
 echo "SPI Installer: u-boot ref is ${SpiInstref}"; 
 echo "SPI Installer: look for SPI Installer root"; 
 env set SpiInstDevType "NotFound"; 
-for thisdevtype in sd usb ; do 
-if test ${SpiInstDevType} = "NotFound"; then 
-	echo "SPI Installer: looking for SPI Installer root in ${thisdevtype} 0#SpiInst"; 
-	if test -e ${thisdevtype} 0#SpiInst "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
-		env set SpiInstDevType "${thisdevtype}"; 
-		echo "SPI Installer: found SPI Installer root on ${SpiInstDevType}"; 
-	fi; 
+echo "SPI Installer: looking for SPI Installer root in mmc 0#SpiInst"; 
+if test -e mmc 0#SpiInst "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
+	env set SpiInstDevType "${thisdevtype}"; 
+	echo "SPI Installer: found SPI Installer root on ${SpiInstDevType}"; 
 fi; 
-done; 
-
 if test ${SpiInstRootFound} = "NotFound"; then 
 	echo "couldnt find SPI installer root"; 
 else; 
@@ -25,7 +20,7 @@ else;
 			fatmkdir ${SpiInstDevType} 0#SpiInst success; 
 			fatwrite ${SpiInstDevType} 0#SpiInst "${loadaddr}" "success/u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin" "${filesize}"; 
 			fatrm ${SpiInstDevType} 0#SpiInst "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
-			led led on
+			led led on; 
 		else; 
 			echo "SPI Installer: spi u-boot install failed"; 
 			fatmkdir ${SpiInstDevType} 0#SpiInst failure; 
