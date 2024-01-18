@@ -13,6 +13,13 @@ if [[ "$ubootRepo" == *"custom_"* ]]; then
 fi
 boardName=$6
 
+
+bootorder="${order//_/ }"
+bootorder="${bootorder//sd/mmc1}"
+bootorder="${bootorder//emmc/mmc0}"
+bootorder="${bootorder//sata/scsi}"
+
+#none of that is right. draft
 sudo apt-get update
 sudo apt-get install gcc-12 gcc-12-aarch64-linux-gnu python3-pyelftools confget
 
@@ -41,8 +48,12 @@ git clone --branch ${ubootRef} "${ubootRepo}" u-boot
 
 grep "CONFIG_ROCKCHIP_SPI_IMAGE=y" $rootdir/u-boot/configs/${boardconfig} >/dev/null || echo -e "CONFIG_ROCKCHIP_SPI_IMAGE=y" >> $rootdir/u-boot/configs/${boardconfig}
 
-cat $rootdir/bb.config >> $rootdir/u-boot/configs/${boardconfig}
-paste -s -d '' $rootdir/BBScriptFile.tmp |tr '\t' ' ' | tr -s ' ' | sed 's/"/\\"/g' | sed 's/|/"/g'  >> $rootdir/u-boot/configs/${boardconfig}
+cat $rootdir/spi-inst.config >> $rootdir/u-boot/configs/${boardconfig}
+
+
+paste -s -d '' $rootdir/preboot.tmp |tr '\t' ' ' | tr -s ' ' | sed 's/"/\\"/g' | sed 's/|/"/g'  >> $rootdir/u-boot/configs/${boardconfig}
+
+paste -s -d '' $rootdir/bootcmd.tmp |tr '\t' ' ' | tr -s ' ' | sed 's/"/\\"/g' | sed 's/|/"/g'  >> $rootdir/u-boot/configs/${boardconfig}
 cat $rootdir/u-boot/configs/${boardconfig}
 sleep 60
 
