@@ -25,6 +25,7 @@ else;
 			fatmkdir ${SpiInstDevType} 0#SpiInst success; 
 			fatwrite ${SpiInstDevType} 0#SpiInst "${loadaddr}" "success/u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin" "${filesize}"; 
 			fatrm ${SpiInstDevType} 0#SpiInst "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
+			led led on
 		else; 
 			echo "SPI Installer: spi u-boot install failed"; 
 			fatmkdir ${SpiInstDevType} 0#SpiInst failure; 
