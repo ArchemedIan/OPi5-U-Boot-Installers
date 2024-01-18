@@ -30,6 +30,7 @@ cd sdimg
 mv $bootorderDir/out/u-boot-${ubootRef}-${boardName}__${order}.bin .
 fallocate -l 16M sdimg-u-boot-${ubootRef}-${boardName}__${order}.img
 dd if=u-boot-${ubootRef}-${boardName}__${order}.bin of=sdimg-u-boot-${ubootRef}-${boardName}__${order}.img seek=1 bs=32k conv=fsync
+
 mv sdimg-u-boot-${ubootRef}-${boardName}__${order}.img $sdimgOutDir/
 mv u-boot-${ubootRef}-${boardName}__${order}.bin $sdimgOutDir/
 #rm $bootorderDir/out/u-boot-${ubootRef}-${boardName}__${order}.bin
@@ -46,6 +47,21 @@ mkdir sdimgspi
 cd sdimgspi
 mv $bootorderSpiDir/out/u-boot-spi-inst-$ubootRef-${boardName}__${order}.bin .
 fallocate -l 16M sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order}.img
+
+losetup -f sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order}.img
+NewImgloopdev=`losetup |grep __ | awk '{print $1}'`
+echo NewImgloopdev is $NewImgloopdev
+dd if=/dev/zero of=${NewImgloopdev} count=4096 bs=512
+parted --script ${NewImgloopdev} -- \
+mklabel gpt \
+mkpart primary ext4 16MiB -32768s \
+name 1 SpiInst
+partprobe $NewImgloopdev
+mkfs.ext4 -L SpiInst ${NewImgloopdev}p1
+partprobe $NewImgloopdev
+tune2fs -O ^metadata_csum ${NewImgloopdev}p1
+
+
 dd if=u-boot-spi-inst-$ubootRef-${boardName}__${order}.bin of=sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order}.img seek=1 bs=32k conv=fsync
 mv sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order}.img $sdimgOutDir/
 mv u-boot-spi-inst-$ubootRef-${boardName}__${order}.bin $sdimgOutDir/
