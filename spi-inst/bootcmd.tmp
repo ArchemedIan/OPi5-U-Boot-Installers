@@ -13,7 +13,7 @@ if test ${SpiInstRootFound} = "NotFound"; then
 	echo "couldnt find SPI installer root"; 
 else; 
 	echo "SPI Installer: attempt to load u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
-	if load ${SpiInstDevType} 0#SpiInst "${loadaddr}" "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
+	if load ${SpiInstDevType} 0#SpiInst "${loadaddr}" "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
 		echo "SPI Installer: loaded. attempt to install u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
 		if sf update "${loadaddr}" 0 "${filesize}"; then 
 			echo "SPI Installer: spi u-boot install success"; 
