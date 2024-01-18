@@ -46,7 +46,7 @@ cd $rootdir
 mkdir sdimgspi
 cd sdimgspi
 mv $bootorderSpiDir/out/u-boot-spi-inst-$ubootRef-${boardName}__${order}.bin .
-fallocate -l 16M sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order}.img
+fallocate -l 128M sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order}.img
 
 losetup -f sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order}.img
 NewImgloopdev=`losetup |grep sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order} | awk '{print $1}'`
