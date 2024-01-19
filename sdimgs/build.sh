@@ -71,13 +71,14 @@ mkdir 1
 sudo mount ${NewImgloopdev}p1 1
 #sudo cp $sdimgOutDir/u-boot-${ubootRef}-${boardName}__${order}.bin 1
 sudo cp $sdimgOutDir/u-boot-${ubootRef}-${boardName}-spi__${order}.bin 1
-mkdir 1/post-spi-operations
-echo "CloneBytes=0" > Clone_usb0_to_emmc.txt
-echo "CloneBytes=0" > Clone_usb0_to_nvme.txt
-echo "CloneBytes=0" > Clone_emmc_to_usb0.txt
-echo "CloneBytes=0" > Clone_nvme_to_usb0.txt
-echo "CloneBytes=0" > Clone_emmc_to_nvme.txt
-echo "CloneBytes=0" > Clone_nvme_to_emmc.txt
+sudo mkdir 1/post-spi-operations
+sudo tee
+echo "CloneBytes=0" |sudo tee Clone_usb0_to_emmc.txt
+echo "CloneBytes=0" |sudo tee Clone_usb0_to_nvme.txt
+echo "CloneBytes=0" |sudo tee Clone_emmc_to_usb0.txt
+echo "CloneBytes=0" |sudo tee Clone_nvme_to_usb0.txt
+echo "CloneBytes=0" |sudo tee Clone_emmc_to_nvme.txt
+echo "CloneBytes=0" |sudo tee Clone_nvme_to_emmc.txt
 
 sudo umount ${NewImgloopdev}p1
 sudo partx -d ${NewImgloopdev}p1
