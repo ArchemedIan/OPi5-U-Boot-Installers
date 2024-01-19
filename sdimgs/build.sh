@@ -74,40 +74,40 @@ sudo cp $sdimgOutDir/u-boot-${ubootRef}-${boardName}-spi__${order}.bin 1
 sudo mkdir 1/post-spi-operations
 sudo tee
 echo "CloneBytes=0" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
-echo "CloneFromDev=usb" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
-echo "CloneFromNum=0" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
-echo "CloneToDev=mmc" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
-echo "CloneToNum=0" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
+echo "CloneFromDev=usb" |sudo tee -a 1/post-spi-operations/Clone_usb0_to_emmc.txt
+echo "CloneFromNum=0" |sudo tee -a 1/post-spi-operations/Clone_usb0_to_emmc.txt
+echo "CloneToDev=mmc" |sudo tee -a 1/post-spi-operations/Clone_usb0_to_emmc.txt
+echo "CloneToNum=0" |sudo tee -a 1/post-spi-operations/Clone_usb0_to_emmc.txt
 
 echo "CloneBytes=0" |sudo tee 1/post-spi-operations/Clone_usb0_to_nvme.txt
-echo "CloneFromDev=usb" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
-echo "CloneFromNum=0" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
-echo "CloneToDev=nvme" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
-echo "CloneToNum=0" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
+echo "CloneFromDev=usb" |sudo tee -a 1/post-spi-operations/Clone_usb0_to_nvme.txt
+echo "CloneFromNum=0" |sudo tee -a 1/post-spi-operations/Clone_usb0_to_nvme.txt
+echo "CloneToDev=nvme" |sudo tee -a 1/post-spi-operations/Clone_usb0_to_nvme.txt
+echo "CloneToNum=0" |sudo tee -a 1/post-spi-operations/Clone_usb0_to_nvme.txt
 
 echo "CloneBytes=0" |sudo tee 1/post-spi-operations/Clone_emmc_to_usb0.txt
-echo "CloneFromDev=mmc" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
-echo "CloneFromNum=0" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
-echo "CloneToDev=usb" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
-echo "CloneToNum=0" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
+echo "CloneFromDev=mmc" |sudo tee -a 1/post-spi-operations/Clone_emmc_to_usb0.txt
+echo "CloneFromNum=0" |sudo tee -a 1/post-spi-operations/Clone_emmc_to_usb0.txt
+echo "CloneToDev=usb" |sudo tee -a 1/post-spi-operations/Clone_emmc_to_usb0.txt
+echo "CloneToNum=0" |sudo tee -a 1/post-spi-operations/Clone_emmc_to_usb0.txt
 
 echo "CloneBytes=0" |sudo tee 1/post-spi-operations/Clone_nvme_to_usb0.txt
-echo "CloneFromDev=nvme" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
-echo "CloneFromNum=0" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
-echo "CloneToDev=usb" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
-echo "CloneToNum=0" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
+echo "CloneFromDev=nvme" |sudo tee -a 1/post-spi-operations/Clone_nvme_to_usb0.txt
+echo "CloneFromNum=0" |sudo tee -a 1/post-spi-operations/Clone_nvme_to_usb0.txt
+echo "CloneToDev=usb" |sudo tee -a 1/post-spi-operations/Clone_nvme_to_usb0.txt
+echo "CloneToNum=0" |sudo tee -a 1/post-spi-operations/Clone_nvme_to_usb0.txt
 
 echo "CloneBytes=0" |sudo tee 1/post-spi-operations/Clone_emmc_to_nvme.txt
-echo "CloneFromDev=mmc" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
-echo "CloneFromNum=0" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
-echo "CloneToDev=nvme" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
-echo "CloneToNum=0" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
+echo "CloneFromDev=mmc" |sudo tee -a 1/post-spi-operations/Clone_emmc_to_nvme.txt
+echo "CloneFromNum=0" |sudo tee -a 1/post-spi-operations/Clone_emmc_to_nvme.txt
+echo "CloneToDev=nvme" |sudo tee -a 1/post-spi-operations/Clone_emmc_to_nvme.txt
+echo "CloneToNum=0" |sudo tee -a 1/post-spi-operations/Clone_emmc_to_nvme.txt
 
 echo "CloneBytes=0" |sudo tee 1/post-spi-operations/Clone_nvme_to_emmc.txt
-echo "CloneFromDev=nvme" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
-echo "CloneFromNum=0" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
-echo "CloneToDev=mmc" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
-echo "CloneToNum=0" |sudo tee 1/post-spi-operations/Clone_usb0_to_emmc.txt
+echo "CloneFromDev=nvme" |sudo tee -a 1/post-spi-operations/Clone_nvme_to_emmc.txt
+echo "CloneFromNum=0" |sudo tee -a 1/post-spi-operations/Clone_nvme_to_emmc.txt
+echo "CloneToDev=mmc" |sudo tee -a 1/post-spi-operations/Clone_nvme_to_emmc.txt
+echo "CloneToNum=0" |sudo tee -a 1/post-spi-operations/Clone_nvme_to_emmc.txt
 
 sudo umount ${NewImgloopdev}p1
 sudo partx -d ${NewImgloopdev}p1
