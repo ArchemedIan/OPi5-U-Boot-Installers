@@ -7,25 +7,25 @@ env set SpiInstFound "NotFound";
 echo "SPI Installer: looking for SPI Installer root we need mmc 1#SpiInst u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
 if test -e mmc 1#SpiInst "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
 	env set SpiInstFound "Found"; 
-	echo "SPI Installer: found SPI Installer root on ${SpiInstFound}"; 
+	echo "SPI Installer: found SPI Installer root on mmc"; 
 fi; 
 if test ${SpiInstFound} = "NotFound"; then 
 	echo "couldnt find SPI installer root"; 
 else; 
 	echo "SPI Installer: attempt to load u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
-	if load ${SpiInstFound} 1#SpiInst "${loadaddr}" "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
+	if load mmc 1#SpiInst "${loadaddr}" "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
 		echo "SPI Installer: loaded. attempt to install u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
 		if sf update "${loadaddr}" 0 "${filesize}"; then 
 			echo "SPI Installer: spi u-boot install success"; 
-			fatmkdir ${SpiInstFound} 1#SpiInst success; 
-			fatwrite ${SpiInstFound} 1#SpiInst "${loadaddr}" "success/u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin" "${filesize}"; 
-			fatrm ${SpiInstFound} 1#SpiInst "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
+			fatmkdir mmc 1#SpiInst success; 
+			fatwrite mmc 1#SpiInst "${loadaddr}" "success/u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin" "${filesize}"; 
+			fatrm mmc 1#SpiInst "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
 			led led on; 
 		else 
 			echo "SPI Installer: spi u-boot install failed"; 
-			fatmkdir ${SpiInstFound} 1#SpiInst failure; 
-			fatwrite ${SpiInstFound} 1#SpiInst "${loadaddr}" "failure/u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin" "${filesize}"; 
-			fatrm ${SpiInstFound} 1#SpiInst "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
+			fatmkdir mmc 1#SpiInst failure; 
+			fatwrite mmc 1#SpiInst "${loadaddr}" "failure/u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin" "${filesize}"; 
+			fatrm mmc 1#SpiInst "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
 		fi; 
 	else 
 		echo "SPI Installer: failed to load spi u-boot into memory"; 
