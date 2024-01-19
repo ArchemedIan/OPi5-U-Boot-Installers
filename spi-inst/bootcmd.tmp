@@ -1,4 +1,5 @@
 CONFIG_BOOTCOMMAND=|
+led led off; 
 echo "SPI Installer: bootorder will be ${SpiInstbootorder}"; 
 echo "SPI Installer: board should be ${SpiInstboardname}"; 
 echo "SPI Installer: u-boot ref is ${SpiInstref}"; 
@@ -7,14 +8,45 @@ env set SpiInstFound "NotFound";
 echo "SPI Installer: looking for SPI Installer root we need mmc 1#SpiInst u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
 if test -e mmc 1#SpiInst "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
 	env set SpiInstFound "Found"; 
-	echo "SPI Installer: found SPI Installer root on mmc"; 
+	echo "SPI Installer: found SPI Installer root on mmc where it should be"; 
 fi; 
 if test ${SpiInstFound} = "NotFound"; then 
-	echo "couldnt find SPI installer root"; 
+	echo "SPI Installer: couldnt find SPI installer. did we succede flash last boot?"; 
+	if test -e mmc 1#SpiInst "success/u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
+		echo "SPI Installer: spi udate was success lets look for post-ops"; 
+		for postop in Clone_usb0_to_emmc Clone_usb0_to_nvme Clone_emmc_to_nvme Clone_nvme_to_emmc; do 
+			if test -e mmc 1#SpiInst "${postop}"; then 
+				echo "SPI Installer: found post-op: "${postop}" lets get to it"; 
+				load mmc 1#SpiInst "${loadaddr}" "${postop}" ; 
+				env import -t "${loadaddr}" "${filesize}"; 
+				if clone usb 0 mmc 0 "${CloneBytes}"; then 
+					echo "SPI Installer: ${postop} success "; 
+					if test -e mmc 1#SpiInst "post-op_success/"; then 
+						echo "post-op_success/ found, not remaking"; 
+					else
+						fatmkdir mmc 1#SpiInst post-op_success;
+					fi; 
+					fatwrite mmc 1#SpiInst "${loadaddr}" "post-op_success/${postop}" "${filesize}"; 
+					fatrm mmc 1#SpiInst "${postop}";  
+				else 
+					echo "SPI Installer: ${postop} fail "; 
+					if test -e mmc 1#SpiInst "post-op_fail/"; then 
+						echo "post-op_fail/ found, not remaking"; 
+					else
+						fatmkdir mmc 1#SpiInst post-op_fail;
+					fi; 
+					fatwrite mmc 1#SpiInst "${loadaddr}" "post-op_fail/${postop}" "${filesize}"; 
+					fatrm mmc 1#SpiInst "${postop}"; 
+				fi; 
+			fi; 
+		done; 
+		led led on; 
+	fi; 
 else; 
 	echo "SPI Installer: attempt to load u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
 	if load mmc 1#SpiInst "${loadaddr}" "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
 		echo "SPI Installer: loaded. attempt to install u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
+		sf probe; 
 		if sf update "${loadaddr}" 0 "${filesize}"; then 
 			echo "SPI Installer: spi u-boot install success"; 
 			fatmkdir mmc 1#SpiInst success; 
