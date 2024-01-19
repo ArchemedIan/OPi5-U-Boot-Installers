@@ -5,6 +5,7 @@ echo "SPI Installer: board should be ${SpiInstboardname}";
 echo "SPI Installer: u-boot ref is ${SpiInstref}"; 
 echo "SPI Installer: look for SPI Installer root"; 
 env set SpiInstFound "NotFound"; 
+env set PostOpdDone 0; 
 echo "SPI Installer: looking for SPI Installer root we need mmc 1#SpiInst u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
 if test -e mmc 1#SpiInst "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
 	env set SpiInstFound "Found"; 
@@ -14,7 +15,7 @@ if test ${SpiInstFound} = "NotFound"; then
 	echo "SPI Installer: couldnt find SPI installer. did we succede flash last boot?"; 
 	if test -e mmc 1#SpiInst "success/u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
 		echo "SPI Installer: spi udate was success lets look for post-ops"; 
-		for postop in Clone_usb0_to_emmc Clone_usb0_to_nvme Clone_emmc_to_nvme Clone_nvme_to_emmc; do 
+		for postop in Clone_emmc_to_nvme.txt Clone_emmc_to_usb0.txt Clone_nvme_to_emmc.txt Clone_nvme_to_usb0.txt Clone_usb0_to_emmc.txt Clone_usb0_to_nvme.txt ; do 
 			if test -e mmc 1#SpiInst "${postop}"; then 
 				echo "SPI Installer: found post-op: "${postop}" lets get to it"; 
 				load mmc 1#SpiInst "${loadaddr}" "${postop}" ; 
