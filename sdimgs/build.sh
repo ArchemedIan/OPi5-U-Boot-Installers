@@ -29,11 +29,14 @@ cd $rootdir
 mkdir sdimg
 cd sdimg
 mv $bootorderDir/out/u-boot-${ubootRef}-${boardName}__${order}.bin .
+mv $bootorderDir/out/u-boot-${ubootRef}-${boardName}-spi__${order}.bin .
+
 fallocate -l 16M sdimg-u-boot-${ubootRef}-${boardName}__${order}.img
 dd if=u-boot-${ubootRef}-${boardName}__${order}.bin of=sdimg-u-boot-${ubootRef}-${boardName}__${order}.img seek=1 bs=32k conv=fsync
 
 mv sdimg-u-boot-${ubootRef}-${boardName}__${order}.img $sdimgOutDir/
 mv u-boot-${ubootRef}-${boardName}__${order}.bin $sdimgOutDir/
+mv u-boot-${ubootRef}-${boardName}-spi__${order}.bin $sdimgOutDir/
 #rm $bootorderDir/out/u-boot-${ubootRef}-${boardName}__${order}.bin
 cd $rootdir
 
