@@ -4,12 +4,12 @@ echo "SPI Installer: board should be ${SpiInstboardname}";
 echo "SPI Installer: u-boot ref is ${SpiInstref}"; 
 echo "SPI Installer: look for SPI Installer root"; 
 env set SpiInstDevType "NotFound"; 
-echo "SPI Installer: looking for SPI Installer root in mmc 1#SpiInst"; 
+echo "SPI Installer: looking for SPI Installer root we need mmc 1#SpiInst u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
 if test -e mmc 1#SpiInst "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
 	env set SpiInstDevType "${thisdevtype}"; 
 	echo "SPI Installer: found SPI Installer root on ${SpiInstDevType}"; 
 fi; 
-if test ${SpiInstRootFound} = "NotFound"; then 
+if test ${SpiInstDevType} = "NotFound"; then 
 	echo "couldnt find SPI installer root"; 
 else; 
 	echo "SPI Installer: attempt to load u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
