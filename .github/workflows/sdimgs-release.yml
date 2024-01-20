@@ -48,8 +48,8 @@ jobs:
            "bootorder": "nvme_sata_emmc",
            },
            {
-           "name": "rk3588s-orangepi-5",
-           "config": "orangepi-5-rk3588s_defconfig",
+           "name": "rk3588-orangepi-5-plus",
+           "config": "orangepi-5-plus-rk3588_defconfig",
            "build": "bootorder",
            "bootorder": "emmc_nvme_sata",
            },
