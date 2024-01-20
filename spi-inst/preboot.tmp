@@ -1,5 +1,5 @@
 CONFIG_PREBOOT=|
-env set boot_targets "__bootorder__"; 
+env set boot_targets "__bootorderReal__"; 
 env set SpiInstbootorder "__bootorder__"; 
 env set SpiInstboardname "__boardname__"; 
 env set SpiInstref "__ref__";
