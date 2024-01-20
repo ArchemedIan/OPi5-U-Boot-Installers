@@ -25,6 +25,9 @@ if test ${SpiInstFound} = "NotFound"; then
 				env import -t "${loadaddr}" "${filesize}"; 
 				echo "SPI Installer: cloning ${CloneFromDev} ${CloneFromNum} ${CloneToDev} ${CloneToNum}"; 
 				gpio set d10; 
+				pci enum; 
+				nvme scan; 
+				usb start; 
 				if clone "${CloneFromDev}" "${CloneFromNum}" "${CloneToDev}" "${CloneToNum}" "${CloneBytes}"; then 
 					echo "SPI Installer: ${postop} success "; 
 					if test -e mmc 1#SpiInst "post-op_success/"; then 
