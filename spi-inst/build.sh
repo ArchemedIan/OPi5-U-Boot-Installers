@@ -56,8 +56,8 @@ git clone --branch ${ubootRef} "${ubootRepo}" u-boot
 grep "CONFIG_ROCKCHIP_SPI_IMAGE=y" $rootdir/u-boot/configs/${boardconfig} >/dev/null || echo -e "CONFIG_ROCKCHIP_SPI_IMAGE=y" >> $rootdir/u-boot/configs/${boardconfig}
 
 cat $rootdir/spi-inst.config >> $rootdir/u-boot/configs/${boardconfig}
-
-paste -s -d '' $rootdir/preboot.tmp | sed "s|__bootorder__|$orderUnder|g" | sed "s|__boardname__|$boardName|g" | sed "s|__ref__|$ubootRef|g" |tr '\t' ' ' | tr -s ' ' | sed 's/"/\\"/g' | sed 's/|/"/g'  >> $rootdir/u-boot/configs/${boardconfig}
+ 
+paste -s -d '' $rootdir/preboot.tmp | sed "s|__bootorderReal__|$bootorder|g" | sed "s|__bootorder__|$orderUnder|g" | sed "s|__boardname__|$boardName|g" | sed "s|__ref__|$ubootRef|g" |tr '\t' ' ' | tr -s ' ' | sed 's/"/\\"/g' | sed 's/|/"/g'  >> $rootdir/u-boot/configs/${boardconfig}
 
 paste -s -d '' $rootdir/bootcmd.tmp |tr '\t' ' ' | tr -s ' ' | sed 's/"/\\"/g' | sed 's/|/"/g'  >> $rootdir/u-boot/configs/${boardconfig}
 cat $rootdir/u-boot/configs/${boardconfig}
