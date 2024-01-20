@@ -52,8 +52,7 @@ if test ${SpiInstFound} = "NotFound"; then
 		led led on; 
 	fi;
 	echo "SPI Installer: Nothing to do, sleep 5 seconds then boot"; 
-	sleep 5; 
-	bootflow scan -b; 
+	sleep 5;  
 else; 
 	echo "SPI Installer: attempt to load u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
 	if load mmc 1#SpiInst "${loadaddr}" "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
