@@ -50,6 +50,7 @@ cd $rootdir
 mkdir sdimgspi
 cd sdimgspi
 mv $bootorderSpiDir/out/u-boot-spi-inst-$ubootRef-${boardName}__${order}.bin .
+mv $bootorderSpiDir/out/u-boot-spi-cloner-$ubootRef-${boardName}__${order}.bin .
 fallocate -l 128M sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order}.img
 
 sudo losetup -f sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order}.img || exit 1
@@ -71,7 +72,8 @@ mkdir 1
 sudo mount ${NewImgloopdev}p1 1
 #sudo cp $sdimgOutDir/u-boot-${ubootRef}-${boardName}__${order}.bin 1
 sudo cp $sdimgOutDir/u-boot-${ubootRef}-${boardName}-spi__${order}.bin 1
-CloneOptions.txt
+sudo cp u-boot-spi-cloner-$ubootRef-${boardName}__${order}.bin 1/Cloner.bin
+
 #####CHANGE BEFORE RELEASE
 echo "EnableClone=1" |sudo tee 1/CloneOptions.txt
 echo "CloneBytes=256M" |sudo tee -a 1/CloneOptions.txt
