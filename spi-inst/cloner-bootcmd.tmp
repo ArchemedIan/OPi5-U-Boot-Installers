@@ -1,0 +1,65 @@
+CONFIG_BOOTCOMMAND=|
+led led off; 
+echo "checking CloneOptions.txt";
+if test -e mmc 1#SpiInst CloneOptions.txt; then 
+	echo "SPI Installer: found CloneOptions.txt"; 
+	load mmc 1#SpiInst "${loadaddr}" CloneOptions.txt; 
+	env import -t "${loadaddr}" "${filesize}"; 
+	if test "${CloneReady}" = 1; then 
+    env set EnableClone 0; 
+    env set CloneReady 0; 
+		env export -t "${loadaddr}" SpiInstbootorder SpiInstboardname SpiInstref EnableClone CloneReady CloneBytes CloneFromDev CloneFromNum CloneToDev CloneToNum ; 
+		fatwrite mmc 1#SpiInst "${loadaddr}" CloneOptions.txt "${filesize}"; 
+    echo "SPI Installer: time to clone ${CloneFromDev} ${CloneFromNum} to ${CloneToDev} ${CloneToNum}"; 
+  ## BUTTON STUFF
+  fi; 
+
+
+fi; 
+
+
+
+
+
+
+
+
+
+if test -e mmc 1#SpiInst "success/u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
+	echo "SPI Installer: spi udate was success lets look for post-ops"; 
+	pci enum; 
+	nvme scan; 
+	usb start; 
+	for postop in Clone_custom.txt Clone_Custom.txt Clone_emmc_to_nvme.txt Clone_emmc_to_usb0.txt Clone_nvme_to_emmc.txt Clone_nvme_to_usb0.txt Clone_usb0_to_emmc.txt Clone_usb0_to_nvme.txt ; do 
+		if test -e mmc 1#SpiInst "${postop}"; then 
+			echo "SPI Installer: found post-op: ${postop} lets get to it"; 
+			load mmc 1#SpiInst "${loadaddr}" "${postop}" ; 
+			env import -t "${loadaddr}" "${filesize}"; 
+			echo "SPI Installer: cloning ${CloneFromDev} ${CloneFromNum} ${CloneToDev} ${CloneToNum}"; 
+			gpio set d10; 
+			pci enum; 
+			nvme scan; 
+			usb start; 
+			if clone "${CloneFromDev}" "${CloneFromNum}" "${CloneToDev}" "${CloneToNum}" "${CloneBytes}"; then 
+				echo "SPI Installer: ${postop} success "; 
+				if test -e mmc 1#SpiInst "post-op_success/"; then 
+					echo "post-op_success/ found, not remaking"; 
+				else
+					fatmkdir mmc 1#SpiInst post-op_success;
+				fi; 
+				fatwrite mmc 1#SpiInst "${loadaddr}" "post-op_success/${postop}" "${filesize}"; 
+				fatrm mmc 1#SpiInst "${postop}";  
+			else 
+				echo "SPI Installer: ${postop} fail "; 
+				if test -e mmc 1#SpiInst "post-op_fail/"; then 
+					echo "post-op_fail/ found, not remaking"; 
+				else
+					fatmkdir mmc 1#SpiInst post-op_fail;
+				fi; 
+				fatwrite mmc 1#SpiInst "${loadaddr}" "post-op_fail/${postop}" "${filesize}"; 
+				fatrm mmc 1#SpiInst "${postop}"; 
+			fi; 
+		fi; 
+	done; 
+	led led on; 
+fi; 
