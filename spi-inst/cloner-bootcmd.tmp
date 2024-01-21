@@ -11,7 +11,11 @@ if test -e mmc 1#SpiInst CloneOptions.txt; then
 		env export -t "${loadaddr}" SpiInstbootorder SpiInstboardname SpiInstref EnableClone CloneReady CloneBytes CloneFromDev CloneFromNum CloneToDev CloneToNum ; 
 		fatwrite mmc 1#SpiInst "${loadaddr}" CloneOptions.txt "${filesize}"; 
     echo "SPI Installer: time to clone ${CloneFromDev} ${CloneFromNum} to ${CloneToDev} ${CloneToNum}"; 
-  ## BUTTON STUFF
+	echo "SPI Installer: double blink while waiting for sdcard to be removed"; 
+	while test -e mmc 1#SpiInst CloneOptions.txt; do 
+		led led on; sleep 0.2; led led off; sleep 0.2; led led on; sleep 0.2; led led off; sleep 0.8; 
+	done; 
+	echo "SPI Installer: double blink while waiting for sdcard to be removed"; 
   fi; 
 
 
@@ -20,7 +24,7 @@ fi;
 
 
 
-
+##DRAFT
 
 
 
