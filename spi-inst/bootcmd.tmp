@@ -3,54 +3,75 @@ led led off;
 echo "SPI Installer: bootorder will be ${SpiInstbootorder}"; 
 echo "SPI Installer: board should be ${SpiInstboardname}"; 
 echo "SPI Installer: u-boot ref is ${SpiInstref}"; 
-echo "SPI Installer: look for SPI Installer root"; 
 env set SpiInstFound "NotFound"; 
-env set PostOpDone 0; 
-echo "SPI Installer: looking for SPI Installer root we need mmc 1#SpiInst u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
+###DRAFTSAVE
+CloneBytes=0
+CloneFromDev=mmc
+CloneFromNum=0
+CloneToDev=nvme
+CloneToNum=0
+echo "checking CloneOptions.txt";
+if test -e mmc 1#SpiInst CloneOptions.txt; then 
+	echo "SPI Installer: found CloneOptions.txt"; 
+	load mmc 1#SpiInst "${loadaddr}" CloneOptions.txt; 
+	env import -t "${loadaddr}" "${filesize}"; 
+	env export -t "${loadaddr}" SpiInstbootorder SpiInstboardname SpiInstref CloneBytes CloneFromDev CloneFromNum CloneToDev CloneToNum ; 
+	fatwrite mmc 1#SpiInst "${loadaddr}" CloneOptions.txt "${filesize}";
+	echo "SPI Installer: cloning ${CloneFromDev} ${CloneFromNum} ${CloneToDev} ${CloneToNum}";
+	echo "SPI Installer: flashing cloner";
+	
+	sf update "${loadaddr}" 0 "${filesize}";
+	
+fi; 
+###DRAFTSAVE
+if test -e mmc 1#SpiInst "success/u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
+	echo "SPI Installer: spi udate was success lets look for post-ops"; 
+	pci enum; 
+	nvme scan; 
+	usb start; 
+	for postop in Clone_custom.txt Clone_Custom.txt Clone_emmc_to_nvme.txt Clone_emmc_to_usb0.txt Clone_nvme_to_emmc.txt Clone_nvme_to_usb0.txt Clone_usb0_to_emmc.txt Clone_usb0_to_nvme.txt ; do 
+		if test -e mmc 1#SpiInst "${postop}"; then 
+			echo "SPI Installer: found post-op: ${postop} lets get to it"; 
+			load mmc 1#SpiInst "${loadaddr}" "${postop}" ; 
+			env import -t "${loadaddr}" "${filesize}"; 
+			echo "SPI Installer: cloning ${CloneFromDev} ${CloneFromNum} ${CloneToDev} ${CloneToNum}"; 
+			gpio set d10; 
+			pci enum; 
+			nvme scan; 
+			usb start; 
+			if clone "${CloneFromDev}" "${CloneFromNum}" "${CloneToDev}" "${CloneToNum}" "${CloneBytes}"; then 
+				echo "SPI Installer: ${postop} success "; 
+				if test -e mmc 1#SpiInst "post-op_success/"; then 
+					echo "post-op_success/ found, not remaking"; 
+				else
+					fatmkdir mmc 1#SpiInst post-op_success;
+				fi; 
+				fatwrite mmc 1#SpiInst "${loadaddr}" "post-op_success/${postop}" "${filesize}"; 
+				fatrm mmc 1#SpiInst "${postop}";  
+			else 
+				echo "SPI Installer: ${postop} fail "; 
+				if test -e mmc 1#SpiInst "post-op_fail/"; then 
+					echo "post-op_fail/ found, not remaking"; 
+				else
+					fatmkdir mmc 1#SpiInst post-op_fail;
+				fi; 
+				fatwrite mmc 1#SpiInst "${loadaddr}" "post-op_fail/${postop}" "${filesize}"; 
+				fatrm mmc 1#SpiInst "${postop}"; 
+			fi; 
+		fi; 
+	done; 
+	led led on; 
+fi; 
+
+
+echo "SPI Installer: looking for SPI Image: mmc 1#SpiInst u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
 if test -e mmc 1#SpiInst "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
 	env set SpiInstFound "Found"; 
-	echo "SPI Installer: found SPI Installer root on mmc where it should be"; 
+	echo "SPI Installer: found SPI u-boot to install"; 
 fi; 
+
+
 if test ${SpiInstFound} = "NotFound"; then 
-	echo "SPI Installer: couldnt find SPI installer. did we succede flash last boot?"; 
-	if test -e mmc 1#SpiInst "success/u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
-		echo "SPI Installer: spi udate was success lets look for post-ops"; 
-		pci enum; 
-		nvme scan; 
-		usb start; 
-		for postop in Clone_custom.txt Clone_Custom.txt Clone_emmc_to_nvme.txt Clone_emmc_to_usb0.txt Clone_nvme_to_emmc.txt Clone_nvme_to_usb0.txt Clone_usb0_to_emmc.txt Clone_usb0_to_nvme.txt ; do 
-			if test -e mmc 1#SpiInst "${postop}"; then 
-				echo "SPI Installer: found post-op: ${postop} lets get to it"; 
-				load mmc 1#SpiInst "${loadaddr}" "${postop}" ; 
-				env import -t "${loadaddr}" "${filesize}"; 
-				echo "SPI Installer: cloning ${CloneFromDev} ${CloneFromNum} ${CloneToDev} ${CloneToNum}"; 
-				gpio set d10; 
-				pci enum; 
-				nvme scan; 
-				usb start; 
-				if clone "${CloneFromDev}" "${CloneFromNum}" "${CloneToDev}" "${CloneToNum}" "${CloneBytes}"; then 
-					echo "SPI Installer: ${postop} success "; 
-					if test -e mmc 1#SpiInst "post-op_success/"; then 
-						echo "post-op_success/ found, not remaking"; 
-					else
-						fatmkdir mmc 1#SpiInst post-op_success;
-					fi; 
-					fatwrite mmc 1#SpiInst "${loadaddr}" "post-op_success/${postop}" "${filesize}"; 
-					fatrm mmc 1#SpiInst "${postop}";  
-				else 
-					echo "SPI Installer: ${postop} fail "; 
-					if test -e mmc 1#SpiInst "post-op_fail/"; then 
-						echo "post-op_fail/ found, not remaking"; 
-					else
-						fatmkdir mmc 1#SpiInst post-op_fail;
-					fi; 
-					fatwrite mmc 1#SpiInst "${loadaddr}" "post-op_fail/${postop}" "${filesize}"; 
-					fatrm mmc 1#SpiInst "${postop}"; 
-				fi; 
-			fi; 
-		done; 
-		led led on; 
-	fi;
 	echo "SPI Installer: Nothing to do, sleep 5 seconds then boot"; 
 	sleep 5;  
 else; 
