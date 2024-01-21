@@ -108,7 +108,7 @@ make ${boardconfig}
 grep "BROM_BOOTSOURCE_SPINOR_RK3588 = 6" arch/arm/include/asm/arch-rockchip/bootrom.h && patch -p1 < v2-1-4-rockchip-rk3588-Fix-boot-from-SPI-flash.diff 
 make KCFLAGS="-fno-peephole2" CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) || exit 1
 
-cp u-boot-rockchip.bin $rootdir/out/u-boot-spi-cloner-$ubootRef-${boardName}__$orderUnder.bin
+cp u-boot-rockchip-spi.bin $rootdir/out/u-boot-spi-cloner-$ubootRef-${boardName}__$orderUnder.bin
 
 cd $rootdir
 
