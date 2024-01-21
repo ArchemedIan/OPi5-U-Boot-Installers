@@ -5,7 +5,7 @@ echo "SPI Installer: board should be ${SpiInstboardname}";
 echo "SPI Installer: u-boot ref is ${SpiInstref}"; 
 env set SpiInstFound "NotFound"; 
 
-echo "checking CloneOptions.txt";
+echo "checking CloneOptions.txt"; 
 if test -e mmc 1#SpiInst CloneOptions.txt; then 
 	echo "SPI Installer: found CloneOptions.txt"; 
 	load mmc 1#SpiInst "${loadaddr}" CloneOptions.txt; 
@@ -13,13 +13,13 @@ if test -e mmc 1#SpiInst CloneOptions.txt; then
 	if test "${EnableClone}" = 1; then  
 		env set CloneReady 1; 
 		env export -t "${loadaddr}" SpiInstbootorder SpiInstboardname SpiInstref EnableClone CloneReady CloneBytes CloneFromDev CloneFromNum CloneToDev CloneToNum ; 
-		fatwrite mmc 1#SpiInst "${loadaddr}" CloneOptions.txt "${filesize}";
-		echo "SPI Installer: will be cloning ${CloneFromDev} ${CloneFromNum} to ${CloneToDev} ${CloneToNum}";
-		echo "SPI Installer: flashing cloner";
+		fatwrite mmc 1#SpiInst "${loadaddr}" CloneOptions.txt "${filesize}"; 
+		echo "SPI Installer: will be cloning ${CloneFromDev} ${CloneFromNum} to ${CloneToDev} ${CloneToNum}"; 
+		echo "SPI Installer: flashing cloner"; 
 		load mmc 1#SpiInst "${loadaddr}" Cloner.bin; 
-		sf update "${loadaddr}" 0 "${filesize}";
-		echo "SPI Installer: reset to cloner";
-		reset
+		sf update "${loadaddr}" 0 "${filesize}"; 
+		echo "SPI Installer: reset to cloner"; 
+		reset; 
 	fi; 
 fi; 
 
