@@ -61,7 +61,7 @@ paste -s -d '' $rootdir/preboot.tmp | sed "s|__bootorderReal__|$bootorder|g" | s
 
 paste -s -d '' $rootdir/bootcmd.tmp |tr '\t' ' ' | tr -s ' ' | sed 's/"/\\"/g' | sed 's/|/"/g'  >> $rootdir/u-boot/configs/${boardconfig}
 cat $rootdir/u-boot/configs/${boardconfig}
-sleep 60
+#sleep 60
 
 cp $rootdir/v2-1-4-rockchip-rk3588-Fix-boot-from-SPI-flash.diff $rootdir/u-boot/
 mkdir $rootdir/out
@@ -79,6 +79,40 @@ make KCFLAGS="-fno-peephole2" CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) || exi
 cp u-boot-rockchip.bin $rootdir/out/u-boot-spi-inst-$ubootRef-${boardName}__$orderUnder.bin
 
 cd $rootdir
+
+
+
+git clone --branch ${ubootRef} "${ubootRepo}" u-boot-cloner
+[ -f $rootdir/u-boot-cloner/configs/${boardconfig} ] || exit 1
+
+grep "CONFIG_ROCKCHIP_SPI_IMAGE=y" $rootdir/u-boot-cloner/configs/${boardconfig} >/dev/null || echo -e "CONFIG_ROCKCHIP_SPI_IMAGE=y" >> $rootdir/u-boot-cloner/configs/${boardconfig}
+
+cat $rootdir/spi-inst.config >> $rootdir/u-boot-cloner/configs/${boardconfig}
+ 
+paste -s -d '' $rootdir/preboot.tmp | sed "s|__bootorderReal__|$bootorder|g" | sed "s|__bootorder__|$orderUnder|g" | sed "s|__boardname__|$boardName|g" | sed "s|__ref__|$ubootRef|g" |tr '\t' ' ' | tr -s ' ' | sed 's/"/\\"/g' | sed 's/|/"/g'  >> $rootdir/u-boot-cloner/configs/${boardconfig}
+
+paste -s -d '' $rootdir/cloner-bootcmd.tmp |tr '\t' ' ' | tr -s ' ' | sed 's/"/\\"/g' | sed 's/|/"/g'  >> $rootdir/u-boot-cloner/configs/${boardconfig}
+cat $rootdir/u-boot-cloner/configs/${boardconfig}
+#sleep 60
+
+cp $rootdir/v2-1-4-rockchip-rk3588-Fix-boot-from-SPI-flash.diff $rootdir/u-boot-cloner/
+mkdir $rootdir/out
+
+export ROCKCHIP_TPL=$rootdir/rkbin/$(confget -f $rootdir/rkbin/RKBOOT/RK3588MINIALL.ini -s LOADER_OPTION FlashData)
+export BL31=$rootdir/rkbin/$(confget -f $rootdir/rkbin/RKTRUST/RK3588TRUST.ini -s BL31_OPTION PATH)
+echo $ROCKCHIP_TPL
+echo $BL31
+cd u-boot
+make mrproper
+make ${boardconfig}
+grep "BROM_BOOTSOURCE_SPINOR_RK3588 = 6" arch/arm/include/asm/arch-rockchip/bootrom.h && patch -p1 < v2-1-4-rockchip-rk3588-Fix-boot-from-SPI-flash.diff 
+make KCFLAGS="-fno-peephole2" CROSS_COMPILE=aarch64-linux-gnu- -j$(nproc) || exit 1
+
+cp u-boot-rockchip.bin $rootdir/out/u-boot-spi-cloner-$ubootRef-${boardName}__$orderUnder.bin
+
+cd $rootdir
+
+
 ls $rootdir
 ls $rootdir/out
 exit 0
