@@ -104,5 +104,4 @@ else;
 		echo "SPI Installer: failed to load spi u-boot into memory"; 
 	fi; 
 fi; 
-
-
+|
