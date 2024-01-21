@@ -17,6 +17,7 @@ if test -e mmc 1#SpiInst CloneOptions.txt; then
 		echo "SPI Installer: will be cloning ${CloneFromDev} ${CloneFromNum} to ${CloneToDev} ${CloneToNum}"; 
 		echo "SPI Installer: flashing cloner"; 
 		load mmc 1#SpiInst "${loadaddr}" Cloner.bin; 
+		sf probe; 
 		sf update "${loadaddr}" 0 "${filesize}"; 
 		echo "SPI Installer: reset to cloner"; 
 		reset; 
