@@ -13,13 +13,13 @@ if test -e mmc 1#SpiInst CloneOptions.txt; then
 		echo "SPI Installer: time to clone ${CloneFromDev} ${CloneFromNum} to ${CloneToDev} ${CloneToNum}"; 
 		env set SDNeedsSwap 0; 
 		env set SDNeedsSwapBack 0; 
-		if test "${CloneFromDev}" = "mmc"; then
-			if test "${CloneFromNum}" = "1"; then
+		if test "${CloneFromDev}" = "mmc"; then 
+			if test "${CloneFromNum}" = "1"; then 
 				env set SDNeedsSwap 1; 
 			fi; 
 		fi; 
-		if test "${CloneToDev}" = "mmc"; then
-			if test "${CloneToNum}" = "1"; then
+		if test "${CloneToDev}" = "mmc"; then 
+			if test "${CloneToNum}" = "1"; then 
 				env set SDNeedsSwap 1; 
 			fi; 
 		fi; 
@@ -28,7 +28,7 @@ if test -e mmc 1#SpiInst CloneOptions.txt; then
 			while test -e mmc 1#SpiInst CloneOptions.txt; do led led on; sleep 0.2; led led off; sleep 0.8; done; 
 			env set SDNeedsSwapBack 1; 
 			echo "SPI Installer: double blink while waiting for sdcard to be inserted"; 
-			until mmc dev 1; then; do led led on; sleep 0.2; led led off; sleep 0.2; led led on; sleep 0.2; led led off; sleep 0.8; done; 
+			until mmc dev 1; do led led on; sleep 0.2; led led off; sleep 0.2; led led on; sleep 0.2; led led off; sleep 0.8; done; 
 		fi; 
 
 
@@ -39,7 +39,7 @@ if test -e mmc 1#SpiInst CloneOptions.txt; then
 		usb start; 
 		if clone "${CloneFromDev}" "${CloneFromNum}" "${CloneToDev}" "${CloneToNum}" "${CloneBytes}"; then 
  			setenv CloneFail 0; setenv CloneSuccess 1; 
-		else 
+		else; 
 			setenv CloneFail 1; setenv CloneSuccess 0; 
 		fi; 
 
@@ -47,35 +47,32 @@ if test -e mmc 1#SpiInst CloneOptions.txt; then
 			echo "SPI Installer: blink while waiting for sdcard to be removed"; 
 			while mmc dev 1; do led led on; sleep 0.2; led led off; sleep 0.8; done; 
 			echo "SPI Installer: double blink while waiting for sdcard to be inserted"; 
-			until test -e mmc 1#SpiInst CloneOptions.txt; then; do led led on; sleep 0.2; led led off; sleep 0.2; led led on; sleep 0.2; led led off; sleep 0.8; done; 
+			until test -e mmc 1#SpiInst CloneOptions.txt; do led led on; sleep 0.2; led led off; sleep 0.2; led led on; sleep 0.2; led led off; sleep 0.8; done; 
 		fi; 
 
 		if test "${CloneSuccess}" = 1; then 
 			echo "SPI Installer: clone success "; 
 			if test -e mmc 1#SpiInst "clone_success/"; then 
 				echo "clone_success/ found, not remaking"; 
-			else
-				fatmkdir mmc 1#SpiInst clone_success;
+			else; 
+				fatmkdir mmc 1#SpiInst clone_success; 
 			fi; 
 			fatwrite mmc 1#SpiInst "${loadaddr}" "clone_success/CloneOptions.txt" "${filesize}"; 
-			fatrm mmc 1#SpiInst CloneOptions.txt;
+			fatrm mmc 1#SpiInst CloneOptions.txt; 
 		fi; 
 		
 		if test "${CloneFail}" = 1; then 
 			echo "SPI Installer: clone fail "; 
 			if test -e mmc 1#SpiInst "clone_fail/"; then 
 				echo "clone_fail/ found, not remaking"; 
-			else
-				fatmkdir mmc 1#SpiInst clone_fail;
+			else; 
+				fatmkdir mmc 1#SpiInst clone_fail; 
 			fi; 
 			fatwrite mmc 1#SpiInst "${loadaddr}" "clone_fail/CloneOptions.txt" "${filesize}"; 
 			fatrm mmc 1#SpiInst CloneOptions.txt; 
 		fi; 
-			
 	fi; 
 fi; 
-
-
 
 
 echo "SPI Installer: looking for SPI Image: mmc 1#SpiInst u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
@@ -97,13 +94,13 @@ else;
 			fatwrite mmc 1#SpiInst "${loadaddr}" "spi_success/u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin" "${filesize}"; 
 			fatrm mmc 1#SpiInst "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
 			led led on; 
-		else 
+		else; 
 			echo "SPI Installer: spi u-boot install failed"; 
 			fatmkdir mmc 1#SpiInst spi_failure; 
 			fatwrite mmc 1#SpiInst "${loadaddr}" "spi_failure/u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin" "${filesize}"; 
 			fatrm mmc 1#SpiInst "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
 		fi; 
-	else 
+	else; 
 		echo "SPI Installer: failed to load spi u-boot into memory"; 
 	fi; 
 fi; 
