@@ -92,5 +92,5 @@ cd $rootdir
 #upload 
 ls $sdimgOutDir/
 
-#while true; do gh release upload ${RELEASE_TAG} ${sdimgOutDir}/sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order}.img && break || gh release create --title ${RELEASE_TAG} ${RELEASE_TAG} ${sdimgOutDir}/sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order}.img && break || sleep $((RANDOM % 60)); done
+while true; do gh release upload ${RELEASE_TAG} ${sdimgOutDir}/sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order}.img && break || gh release create --title ${RELEASE_TAG} ${RELEASE_TAG} ${sdimgOutDir}/sdimg-u-boot-spi-inst-${ubootRef}-${boardName}__${order}.img && break || sleep $((RANDOM % 60)); done
 
