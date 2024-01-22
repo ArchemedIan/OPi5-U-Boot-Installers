@@ -33,6 +33,7 @@
 1) if you clone operation uses an sdcard, wait for the led to blink once every 2 seconds. its now safe to remove the spi installer sdcard
 1) once youve removed the card, the led will blink twice every 2 seconds. its now safe to insert the sdcard you want to clone from/to. be aware this will accept any card as the clone source/destination , including the spi installer. 
 1) the led should now stop blinking and the fan will start if it is connected to the fan header (at least on the 5plus, create a github issue if it does not on the 5/5b) this means the cloning process has started.
+1) if you cloned to/from an SDcard, the led will start blinking again. remove the sdcard used for cloning, and re-insert the SPI installer SDcard.
 1) now wait for the led to be lit solid. if it does, the clone succeded, and the spi has been flashed.
 
 ## Clone USB or EMMC to NVME ( or dump NVME or EMMC to USB) without installing SPI u-boot
