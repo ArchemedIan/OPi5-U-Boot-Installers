@@ -1,0 +1,74 @@
+name: test sdimgs of u-boot mainline with custom bootorder
+run-name: ${{ inputs.bootorder}} ${{ inputs.bootorder_custom}}
+on:
+  workflow_dispatch:
+    inputs:  
+      releaseTag:
+        description: releaseTag
+        required: true
+        type: string
+      uboot_repo:
+        required: true
+        type: choice
+        description: u-boot git repo
+        options: 
+        - https://source.denx.de/u-boot/u-boot
+        - custom_repo
+      uboot_repo_custom:
+        description: custom u-boot git repo
+        required: false
+        type: string
+      uboot_ref:
+        required: true
+        type: choice
+        description: u-boot ref
+        options: 
+        - v2024.01
+        - v2023.10
+        - master
+        - custom_ref
+      uboot_ref_custom:
+        description: custom u-boot ref
+        required: false
+        type: string
+
+
+jobs:
+  build:
+    name: ${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-${{ matrix.boards.bootorder }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        boards: 
+          [
+            {
+             "name": "rk3588s-orangepi-5",
+             "config": "orangepi-5-rk3588s_defconfig",
+             "build": "bootorder",
+             "bootorder": "usb_sd_emmc_nvme_sata",
+            },
+          ]
+
+    steps:
+      - name: Checkout Opi5-u-boot-custom
+        uses: actions/checkout@v3
+        with:
+          repository: ArchemedIan/Opi5-u-boot-custom
+          ref: main
+          path: .
+
+      - name: Build "${{ matrix.boards.config }}." sdimgs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ inputs.releaseTag }}
+        run: |
+          cd sdimgs
+          chmod a+x ./build.sh 
+          ./build.sh "${{ inputs.uboot_ref }}" "${{ inputs.uboot_repo }}" "${{ matrix.boards.config }}" "${{ matrix.boards.bootorder }}" "${{ inputs.uboot_ref_custom }}" "${{ inputs.uboot_repo_custom}}" "${{ inputs.bootorder_custom }}" "${{ matrix.boards.name }}"
+      
+      #- name: Upload artifacts
+       # uses: actions/upload-artifact@v3
+        #with:
+         # name: u-boot-sdimgs-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-${{ inputs.bootorder}}
+          #path: |
+           # sdimgs/sdmimgout/*
