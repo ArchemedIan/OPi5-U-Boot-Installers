@@ -8,43 +8,43 @@ if test -e mmc 1#SpiInst CloneOptions.txt; then
 	if test "${CloneReady}" = 1; then 
 		env set EnableClone 0; 
 		env set CloneReady 0; 
-		env export -t "${loadaddr}" SpiInstbootorder SpiInstboardname SpiInstref EnableClone CloneReady CloneBytes CloneFromDev CloneFromNum CloneToDev CloneToNum ; 
+		env export -t "${loadaddr}" SpiInstbootorder SpiInstboardname SpiInstref EnableClone CloneReady CloneBytes CloneFrom CloneTo ; 
 		fatwrite mmc 1#SpiInst "${loadaddr}" CloneOptions.txt "${filesize}"; 
 		
 		env set SDNeedsSwap 0; 
 		env set SDNeedsSwapBack 0; 
-		if test "${CloneFromDev}" = "sd"; then 
+		if test "${CloneFrom}" = "sd"; then 
 			env set SDNeedsSwap 1; 
 			env set CloneFromDev "mmc"; 
 			env set CloneFromNum 1; 
 		fi; 
-		if test "${CloneFromDev}" = "emmc"; then 
+		if test "${CloneFrom}" = "emmc"; then 
 			env set CloneFromDev "mmc"; 
 			env set CloneFromNum 0; 
 		fi; 
-		if test "${CloneFromDev}" = "usb"; then 
+		if test "${CloneFrom}" = "usb"; then 
 			env set CloneFromDev "usb"; 
 			env set CloneFromNum 0; 
 		fi; 
-		if test "${CloneFromDev}" = "nvme"; then 
+		if test "${CloneFrom}" = "nvme"; then 
 			env set CloneFromDev "nvme"; 
 			env set CloneFromNum 0; 
 		fi; 
 
-		if test "${CloneToDev}" = "sd"; then 
+		if test "${CloneTo}" = "sd"; then 
 			env set SDNeedsSwap 1; 
 			env set CloneToDev "mmc"; 
 			env set CloneToNum 1; 
 		fi; 
-		if test "${CloneToDev}" = "emmc"; then 
+		if test "${CloneTo}" = "emmc"; then 
 			env set CloneToDev "mmc"; 
 			env set CloneToNum 0; 
 		fi; 
-		if test "${CloneToDev}" = "usb"; then 
+		if test "${CloneTo}" = "usb"; then 
 			env set CloneToDev "usb"; 
 			env set CloneToNum 0; 
 		fi; 
-		if test "${CloneToDev}" = "nvme"; then 
+		if test "${CloneTo}" = "nvme"; then 
 			env set CloneToDev "nvme"; 
 			env set CloneToNum 0; 
 		fi; 
