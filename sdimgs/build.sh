@@ -77,10 +77,8 @@ sudo cp u-boot-spi-cloner-$ubootRef-${boardName}__${order}.bin 1/Cloner.bin
 #####CHANGE BEFORE RELEASE
 echo "EnableClone=1" |sudo tee 1/CloneOptions.txt
 echo "CloneBytes=256M" |sudo tee -a 1/CloneOptions.txt
-echo "CloneFromDev=mmc" |sudo tee -a 1/CloneOptions.txt
-echo "CloneFromNum=1" |sudo tee -a 1/CloneOptions.txt
-echo "CloneToDev=mmc" |sudo tee -a 1/CloneOptions.txt
-echo "CloneToNum=0" |sudo tee -a 1/CloneOptions.txt
+echo "CloneFrom=sd" |sudo tee -a 1/CloneOptions.txt
+echo "CloneTo=emmc" |sudo tee -a 1/CloneOptions.txt
 
 sudo umount ${NewImgloopdev}p1
 sudo partx -d ${NewImgloopdev}p1
