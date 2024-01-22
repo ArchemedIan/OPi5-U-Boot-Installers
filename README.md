@@ -38,5 +38,5 @@
 11) If you cloned to/from an SDcard, the led will start blinking again. remove the SDcard used for cloning, and re-insert the SPI installer SDcard.
 12) Now wait for the led to be lit solid. if it does, the clone succeded, and the spi has been flashed.
 
-## Clone USB or EMMC to NVME ( or dump NVME or EMMC to USB) without installing SPI u-boot:
+## Clone without installing SPI u-boot:
 0) Same as above, except create a folder called `success` after step 2 and move (not copy) the u-boot .bin file to it.
