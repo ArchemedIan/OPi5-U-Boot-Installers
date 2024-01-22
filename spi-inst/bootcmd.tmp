@@ -12,7 +12,7 @@ if test -e mmc 1#SpiInst CloneOptions.txt; then
 	env import -t "${loadaddr}" "${filesize}"; 
 	if test "${EnableClone}" = 1; then  
 		env set CloneReady 1; 
-		env export -t "${loadaddr}" SpiInstbootorder SpiInstboardname SpiInstref EnableClone CloneReady CloneBytes CloneFromDev CloneFromNum CloneToDev CloneToNum ; 
+		env export -t "${loadaddr}" SpiInstbootorder SpiInstboardname SpiInstref EnableClone CloneReady CloneBytes CloneFrom CloneTo ; 
 		fatwrite mmc 1#SpiInst "${loadaddr}" CloneOptions.txt "${filesize}"; 
 		echo "SPI Installer: will be cloning ${CloneFromDev} ${CloneFromNum} to ${CloneToDev} ${CloneToNum}"; 
 		echo "SPI Installer: flashing cloner"; 
