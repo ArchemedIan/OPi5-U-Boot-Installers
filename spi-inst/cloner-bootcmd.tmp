@@ -10,27 +10,53 @@ if test -e mmc 1#SpiInst CloneOptions.txt; then
 		env set CloneReady 0; 
 		env export -t "${loadaddr}" SpiInstbootorder SpiInstboardname SpiInstref EnableClone CloneReady CloneBytes CloneFromDev CloneFromNum CloneToDev CloneToNum ; 
 		fatwrite mmc 1#SpiInst "${loadaddr}" CloneOptions.txt "${filesize}"; 
-		echo "SPI Installer: time to clone ${CloneFromDev} ${CloneFromNum} to ${CloneToDev} ${CloneToNum}"; 
+		
 		env set SDNeedsSwap 0; 
 		env set SDNeedsSwapBack 0; 
-		if test "${CloneFromDev}" = "mmc"; then 
-			if test "${CloneFromNum}" = "1"; then 
-				env set SDNeedsSwap 1; 
-			fi; 
+		if test "${CloneFromDev}" = "sd"; then 
+			env set SDNeedsSwap 1; 
+			env set CloneFromDev "mmc"; 
+			env set CloneFromNum 1; 
 		fi; 
-		if test "${CloneToDev}" = "mmc"; then 
-			if test "${CloneToNum}" = "1"; then 
-				env set SDNeedsSwap 1; 
-			fi; 
+		if test "${CloneFromDev}" = "emmc"; then 
+			env set CloneFromDev "mmc"; 
+			env set CloneFromNum 0; 
 		fi; 
-		if test "${SDNeedsSwap}" = 1; then 
-			echo "SPI Installer: blink while waiting for sdcard to be removed"; 
-			while test -e mmc 1#SpiInst CloneOptions.txt; do mmc rescan; led led on; sleep 0.2; led led off; sleep 0.8; done; 
-			env set SDNeedsSwapBack 1; 
-			echo "SPI Installer: double blink while waiting for sdcard to be inserted"; 
-			until mmc dev 1; do mmc rescan; led led on; sleep 0.2; led led off; sleep 0.2; led led on; sleep 0.2; led led off; sleep 0.8; done; 
+		if test "${CloneFromDev}" = "usb"; then 
+			env set CloneFromDev "usb"; 
+			env set CloneFromNum 0; 
+		fi; 
+		if test "${CloneFromDev}" = "nvme"; then 
+			env set CloneFromDev "nvme"; 
+			env set CloneFromNum 0; 
 		fi; 
 
+		if test "${CloneToDev}" = "sd"; then 
+			env set SDNeedsSwap 1; 
+			env set CloneToDev "mmc"; 
+			env set CloneToNum 1; 
+		fi; 
+		if test "${CloneToDev}" = "emmc"; then 
+			env set CloneToDev "mmc"; 
+			env set CloneToNum 0; 
+		fi; 
+		if test "${CloneToDev}" = "usb"; then 
+			env set CloneToDev "usb"; 
+			env set CloneToNum 0; 
+		fi; 
+		if test "${CloneToDev}" = "nvme"; then 
+			env set CloneToDev "nvme"; 
+			env set CloneToNum 0; 
+		fi; 
+		echo "SPI Installer: time to clone ${CloneFromDev} ${CloneFromNum} to ${CloneToDev} ${CloneToNum}"; 
+
+		if test "${SDNeedsSwap}" = 1; then 
+			echo "SPI Installer: blink while waiting for sdcard to be removed"; 
+			while test -e mmc 1#SpiInst CloneOptions.txt; do mmc rescan; led led on; sleep 0.2; led led off; sleep 2; done; 
+			env set SDNeedsSwapBack 1; 
+			echo "SPI Installer: double blink while waiting for sdcard to be inserted"; 
+			until mmc dev 1; do mmc rescan; led led on; sleep 0.2; led led off; sleep 0.2; led led on; sleep 0.2; led led off; sleep 2; done; 
+		fi; 
 
 		echo "SPI Installer: cloning ${CloneFromDev} ${CloneFromNum} ${CloneToDev} ${CloneToNum}"; 
 		gpio set d10; 
@@ -45,9 +71,9 @@ if test -e mmc 1#SpiInst CloneOptions.txt; then
 
 		if test "${SDNeedsSwapBack}" = 1; then 
 			echo "SPI Installer: blink while waiting for sdcard to be removed"; 
-			while mmc dev 1; do mmc rescan; led led on; sleep 0.2; led led off; sleep 0.8; done; 
+			while mmc dev 1; do mmc rescan; led led on; sleep 0.2; led led off; sleep 2; done; 
 			echo "SPI Installer: double blink while waiting for sdcard to be inserted"; 
-			until test -e mmc 1#SpiInst CloneOptions.txt; do mmc rescan; led led on; sleep 0.2; led led off; sleep 0.2; led led on; sleep 0.2; led led off; sleep 0.8; done; 
+			until test -e mmc 1#SpiInst CloneOptions.txt; do mmc rescan; led led on; sleep 0.2; led led off; sleep 0.2; led led on; sleep 0.2; led led off; sleep 2; done; 
 		fi; 
 
 		if test "${CloneSuccess}" = 1; then 
