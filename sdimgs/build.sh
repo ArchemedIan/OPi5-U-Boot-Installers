@@ -74,11 +74,10 @@ sudo mount ${NewImgloopdev}p1 1
 sudo cp $sdimgOutDir/u-boot-${ubootRef}-${boardName}-spi__${order}.bin 1
 sudo cp u-boot-spi-cloner-$ubootRef-${boardName}__${order}.bin 1/Cloner.bin
 
-#####CHANGE BEFORE RELEASE
-echo "EnableClone=1" |sudo tee 1/CloneOptions.txt
-echo "CloneBytes=256M" |sudo tee -a 1/CloneOptions.txt
+echo "EnableClone=0" |sudo tee 1/CloneOptions.txt
+echo "CloneBytes=0" |sudo tee -a 1/CloneOptions.txt
 echo "CloneFrom=sd" |sudo tee -a 1/CloneOptions.txt
-echo "CloneTo=emmc" |sudo tee -a 1/CloneOptions.txt
+echo "CloneTo=nvme" |sudo tee -a 1/CloneOptions.txt
 
 sudo umount ${NewImgloopdev}p1
 sudo partx -d ${NewImgloopdev}p1
