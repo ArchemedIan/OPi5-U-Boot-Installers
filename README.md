@@ -11,9 +11,9 @@
 ### for OPi5/5b, use an `rk3588s-orangepi-5` file 
 ### for opi5plus, use an `rk3588-orangepi-5-plus` file
 
-- NON-SPI Bootorderd mainline Downloads: [v2024.01](https://github.com/ArchemedIan/Opi5-u-boot-custom/releases/tag/v2024.01-bootordered)
-- SPI Bootorderd mainline Downloads: [v2024.01](https://github.com/ArchemedIan/Opi5-u-boot-custom/releases/tag/v2024.01-bootordered-spi)
 - SDcard Images with SPI installer/cloner: [v2024.01](https://github.com/ArchemedIan/Opi5-u-boot-custom/releases/tag/v2024.01-bootordered-SPI-Installer-SDimages)
+- SPI Bootorderd mainline Downloads: [v2024.01](https://github.com/ArchemedIan/Opi5-u-boot-custom/releases/tag/v2024.01-bootordered-spi)
+- NON-SPI Bootorderd mainline Downloads: [v2024.01](https://github.com/ArchemedIan/Opi5-u-boot-custom/releases/tag/v2024.01-bootordered)
 
 # Installer Instructions:
 
