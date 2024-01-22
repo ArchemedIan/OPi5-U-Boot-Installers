@@ -20,7 +20,7 @@
 ## Install U-Boot to SPI only:
 0) Grab a u-boot installer with the desired bootorder from the link above.
 1) Flash it to an SDcard. and insert it into the OPi5.
-2) Boot the device, wait a few moments for the LED to come on. (on 5plus the led is blue, on 5/5b it may be green.) if there is any error, the led will not come on. this should not take more than 5 mins.
+2) Boot the device, wait a few moments for the LED to come on. (on 5plus the led is blue, on 5/5b it may be green.) if there is any error, the led will not come on. this should not take more than 10 mins.
 3) Thats it, take the SDcard out, and reboot.
 
 ## Install U-Boot to SPI and clone USB/SD/EMMC to NVME (or any other combination):
