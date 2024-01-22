@@ -66,9 +66,9 @@ jobs:
           chmod a+x ./build.sh 
           ./build.sh "${{ inputs.uboot_ref }}" "${{ inputs.uboot_repo }}" "${{ matrix.boards.config }}" "${{ matrix.boards.bootorder }}" "${{ inputs.uboot_ref_custom }}" "${{ inputs.uboot_repo_custom}}" "${{ inputs.bootorder_custom }}" "${{ matrix.boards.name }}"
       
-      #- name: Upload artifacts
-       # uses: actions/upload-artifact@v3
-        #with:
-         # name: u-boot-sdimgs-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-${{ inputs.bootorder}}
-          #path: |
-           # sdimgs/sdmimgout/*
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: u-boot-sdimgs-${{ inputs.uboot_ref }}-${{ matrix.boards.name }}-${{ inputs.bootorder}}
+          path: |
+            sdimgs/sdmimgout/*
