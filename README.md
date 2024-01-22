@@ -17,13 +17,13 @@
 
 # Installer Instructions:
 
-## Install to SPI only:
+## Install U-Boot to SPI only:
 0) Grab a u-boot installer with the desired bootorder from the link above.
 1) Flash it to an SDcard. and insert it into the OPi5.
 2) Boot the device, wait a few moments for the LED to come on. (on 5plus the led is blue, on 5/5b it may be green.) if there is any error, the led will not come on. this should not take more than 5 mins.
 3) Thats it, take the SDcard out, and reboot.
 
-## Install to SPI and clone USB/SD/EMMC to NVME (or any other combination):
+## Install U-Boot to SPI and clone USB/SD/EMMC to NVME (or any other combination):
 0) Grab a u-boot installer with the desired bootorder from the link above.
 1) Flash it to an SDcard. if you want to clone the os on an SDcard youre already booting from, youll need to flash the installer to a second SDcard.
 2) Go to the SDcard's root (you may have to unplug/replug the card,) and edit `CloneOptions.txt`.
@@ -38,5 +38,5 @@
 11) If you cloned to/from an SDcard, the led will start blinking again. remove the SDcard used for cloning, and re-insert the SPI installer SDcard.
 12) Now wait for the led to be lit solid. if it does, the clone succeded, and the spi has been flashed.
 
-## Clone without installing SPI u-boot:
+## Clone without installing SPI U-Boot:
 0) Same as above, except create a folder called `success` after step 2 and move (not copy) the u-boot .bin file to it.
