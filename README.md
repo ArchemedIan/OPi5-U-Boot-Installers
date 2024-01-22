@@ -1,7 +1,7 @@
 # Bootordered Mainline Orangepi 5/5B/5Plus U-Boot SPI builds
 ## Now with SD image installers that can also install images or clone your EMMC to NVME. 
 
-### the easiest way to install an os to your OPi5's NVME from Windows.
+### the easiest way to install an OS to your OPi5's NVME from Windows.
 (linux and that other one too.)
 
 
