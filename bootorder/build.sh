@@ -26,8 +26,10 @@ boardName=$8
 
 orderUnder="${order// /_}"
 bootorder="${order//_/ }"
-bootorder="${bootorder//sd/mmc1}"
-bootorder="${bootorder//emmc/mmc0}"
+#bootorder="${bootorder//sd/mmc1}"
+bootorder="${bootorder//sd/mmc@fe2c0000.bootdev}"
+#bootorder="${bootorder//emmc/mmc0}"
+bootorder="${bootorder//emmc/mmc@fe2e0000.bootdev}"
 bootorder="${bootorder//sata/scsi}"
 
 #sleep 30
