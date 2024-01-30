@@ -47,6 +47,12 @@ jobs:
              "build": "bootorder",
              "bootorder": "sd_usb_nvme_sata",
             },
+            {
+             "name": "rk3588s-orangepi-5",
+             "config": "orangepi-5-rk3588s_defconfig",
+             "build": "bootorder",
+             "bootorder": "sd_usb_nvme_sata",
+            },
           ]
 
     steps:
