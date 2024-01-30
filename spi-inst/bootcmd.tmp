@@ -6,26 +6,29 @@ echo "SPI Installer: u-boot ref is ${SpiInstref}";
 env set SpiInstFound "NotFound"; 
 
 echo "checking CloneOptions.txt"; 
-if test -e mmc 1#SpiInst CloneOptions.txt; then 
+for testINSTDEV in 0 1; do 
+if test -e mmc ${INSTDEV}#SpiInst CloneOptions.txt; then 
+	env set INSTDEV "${testINSTDEV}"
 	echo "SPI Installer: found CloneOptions.txt"; 
-	load mmc 1#SpiInst "${loadaddr}" CloneOptions.txt; 
+	load mmc "${INSTDEV}#SpiInst" "${loadaddr}" CloneOptions.txt; 
 	env import -t "${loadaddr}" "${filesize}"; 
 	if test "${EnableClone}" = 1; then  
 		env set CloneReady 1; 
 		env export -t "${loadaddr}" SpiInstbootorder SpiInstboardname SpiInstref EnableClone CloneReady CloneBytes CloneFrom CloneTo ; 
-		fatwrite mmc 1#SpiInst "${loadaddr}" CloneOptions.txt "${filesize}"; 
+		fatwrite mmc "${INSTDEV}#SpiInst" "${loadaddr}" CloneOptions.txt "${filesize}"; 
 		echo "SPI Installer: will be cloning ${CloneFromDev} ${CloneFromNum} to ${CloneToDev} ${CloneToNum}"; 
 		echo "SPI Installer: flashing cloner"; 
-		load mmc 1#SpiInst "${loadaddr}" Cloner.bin; 
+		load mmc "${INSTDEV}#SpiInst" "${loadaddr}" Cloner.bin; 
 		sf probe; 
 		sf update "${loadaddr}" 0 "${filesize}"; 
 		echo "SPI Installer: reset to cloner"; 
 		reset; 
 	fi; 
 fi; 
+done; 
 
-echo "SPI Installer: looking for SPI Image: mmc 1#SpiInst u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
-if test -e mmc 1#SpiInst "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
+echo "SPI Installer: looking for SPI Image: mmc ${INSTDEV}#SpiInst u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
+if test -e mmc "${INSTDEV}#SpiInst" "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
 	env set SpiInstFound "Found"; 
 	echo "SPI Installer: found SPI u-boot to install"; 
 fi; 
@@ -34,20 +37,20 @@ if test "${SpiInstFound}" = "NotFound"; then
 	echo "SPI Installer: no spi image found"; 
 else; 
 	echo "SPI Installer: attempt to load u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
-	if load mmc 1#SpiInst "${loadaddr}" "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
+	if load mmc "${INSTDEV}#SpiInst" "${loadaddr}" "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
 		echo "SPI Installer: loaded. attempt to install u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
 		sf probe; 
 		if sf update "${loadaddr}" 0 "${filesize}"; then 
 			echo "SPI Installer: spi u-boot install success"; 
-			fatmkdir mmc 1#SpiInst success; 
-			fatwrite mmc 1#SpiInst "${loadaddr}" "success/u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin" "${filesize}"; 
-			fatrm mmc 1#SpiInst "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
+			fatmkdir mmc "${INSTDEV}#SpiInst" success; 
+			fatwrite mmc "${INSTDEV}#SpiInst" "${loadaddr}" "success/u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin" "${filesize}"; 
+			fatrm mmc "${INSTDEV}#SpiInst" "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
 			led led on; 
 		else 
 			echo "SPI Installer: spi u-boot install failed"; 
-			fatmkdir mmc 1#SpiInst failure; 
-			fatwrite mmc 1#SpiInst "${loadaddr}" "failure/u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin" "${filesize}"; 
-			fatrm mmc 1#SpiInst "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
+			fatmkdir mmc "${INSTDEV}#SpiInst" failure; 
+			fatwrite mmc "${INSTDEV}#SpiInst" "${loadaddr}" "failure/u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin" "${filesize}"; 
+			fatrm mmc "${INSTDEV}#SpiInst" "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
 		fi; 
 	else 
 		echo "SPI Installer: failed to load spi u-boot into memory"; 
