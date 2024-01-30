@@ -103,7 +103,7 @@ if test -e mmc "${testINSTDEV}#SpiInst" CloneOptions.txt; then
 fi; 
 done; 
 
-echo "SPI Installer: looking for SPI Image: mmc "${INSTDEV}#SpiInst" u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
+echo "SPI Installer: looking for SPI Image: mmc ${INSTDEV}#SpiInst u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; 
 if test -e mmc "${INSTDEV}#SpiInst" "u-boot-${SpiInstref}-${SpiInstboardname}-spi__${SpiInstbootorder}.bin"; then 
 	env set SpiInstFound "Found"; 
 	echo "SPI Installer: found SPI u-boot to install"; 
