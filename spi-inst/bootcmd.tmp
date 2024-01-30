@@ -7,7 +7,7 @@ env set SpiInstFound "NotFound";
 
 echo "checking CloneOptions.txt"; 
 for testINSTDEV in 0 1; do 
-if test -e mmc ${INSTDEV}#SpiInst CloneOptions.txt; then 
+if test -e mmc "${testINSTDEV}#SpiInst" CloneOptions.txt; then 
 	env set INSTDEV "${testINSTDEV}"
 	echo "SPI Installer: found CloneOptions.txt"; 
 	load mmc "${INSTDEV}#SpiInst" "${loadaddr}" CloneOptions.txt; 
